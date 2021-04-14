@@ -1,114 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Data Visualization Techniques</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js" crossorigin="null"></script>
+
 <title>Page Title</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src = "content.js"></script>
-<script src = "filters.js"></script>
 
 </head>
 
 <body>
   <div class = "header"> 
-    <h2>TrustMLVis Browser</h2>
-      <b><p>
-       A Visual Survey of Text Visualization Techniques (IEEE PacificVis 2015 short paper)
-      </p></b>
-      <p>Provided by ISOVIS group</p>
+    <h2 style="color: #fff">A Visual Survey of Spatial-Temporal Data Visualization Techniques</h2><br>
+      <p>
+        <a href = "http://sites.gsu.edu/yzhu/" style="color: #fff; text-decoration: underline"  target="_blank">Ying Zhu @GSU</a>
+      </p>
+      
   </div>
 <br>
   <div class="clearfix">
     <div class="box">
-    <p>Techniques displayed:</p>
-    <p align = "center" style = "font-size: 30px;"><b>0</b></p>
-    <hr class="line_style">
-    <p>Search:</p>
-    <input type="search" size="34" id="mySearchText" onsearch="loadSearch()" placeholder="Full-text search and press enter">
-    <div class="pull-right"><button class="btn" onclick="document.getElementById('mySearchText').value = ''"><i class="fa fa-close"></i></button>
+    <pre><p>Techniques displayed:</p>  <p id="count" align = "center" style = "font-size: 30px;">124</p></pre>
+    
+    <pre><p>Search:</p><input type="search" size="34" id="mySearchText" oninput="loadSearchText()" placeholder="Full-text search"> <div class="pull-right"><div id="clearText"><button class="btn" onclick="searchClear()"><i class="fa fa-close"></i></button></div>
     </div>
-    <br>
-    <hr class="line_style">
+   
+<a href="#" onclick="keywordModal()"><u>Keyword search list</u></a>
+</pre>
+<pre><p>Select All</p><br><input type="button" class= "btn btn-primary btn-block" value="Select All" data-toggle="tooltip" data-entry="SelectAll" title="SelectAll" id="selectAll" onclick="loadAll();"></pre>
+    
+   
         
 <div id="filters">
   
-  <p>A. Category</p><br>
   
+  <p><pre>A.1 Visual Representation </p></pre>
  
-  <input type="button" class= "btn btn-primary active" value="Spatial" data-toggle="tooltip" data-entry="spatial" title="A.1 Spatial" id="spatial" onclick="loadSpatial()">
-  <input type="button"class= "btn btn-primary active" value="Temporal" data-toggle="tooltip" data-entry="temporal" title="A.2 Temporal" id="temporal" onclick="loadTemporal()">
-  <input type="button" class= "btn btn-primary active" value="Spatial-Temporal" data-toggle="tooltip" data-entry="spatioTemporal" title="A.3 Spatial-Temporal" id="spatioTemporal" onclick=""><br><br>
-  <input type="button"class= "btn btn-primary active" value="Visualization" data-toggle="tooltip" data-entry="visualization" title="A.4 Visualization" id="visualization" onclick="">
-  <input type="button"class= "btn btn-primary active" value="All" data-toggle="tooltip" data-entry="All" title="All" id="all" onclick="window.location.reload();">
+  <div id="visualRep">
+  <input type="checkbox" id="otherMap" hidden name="otherMap" class="cb-btn" value="otherMap" onclick="filterResults()"/><label class="btn btn-info " for="otherMap" data-toggle="tooltip" data-entry="otherMap" title="A1.1 Other Map" >Other Map</label>&nbsp;
+  <input type="checkbox" id="cartographicMap" hidden name="cartographicMap" class="cb-btn" value="cartographicMap" onclick="filterResults()"><label class="btn btn-info " for="cartographicMap" data-toggle="tooltip" data-entry="cartographicMap" title="A1.2 Cartographic Map" >Cartographic Map</label><br><br>
+  <input type="checkbox" id="scatterPlot" hidden name="scatterPlot" class="cb-btn" value="scatterPlot" onclick="filterResults()"><label class="btn btn-info "  for="scatterPlot" data-toggle="tooltip" data-entry="scatterPlot" title="A1.3 Scatter Plot">Scatter Plot</label>&nbsp;
+  <input type="checkbox" id="circularChart" hidden name="circularChart" class="cb-btn" value="circularChart" onclick="filterResults()"><label class="btn btn-info " for="circularChart" data-toggle="tooltip" data-entry="circularChart" title="A1.4 Circular Chart" >Circular Chart</label><br><br>
+ 
+  <input type="checkbox" id="timeline" hidden name="timeline" class="cb-btn" value="timeline" onclick="filterResults()"><label class="btn btn-info " for="timeline" data-toggle="tooltip" data-entry="timeline" title="A1.5 TimeLine">Time Line</label>&nbsp;
+  <input type="checkbox" id="timecurve" hidden name="timecurve" class="cb-btn" value="timecurve" onclick="filterResults()"><label class="btn btn-info " for="timecurve" data-toggle="tooltip" data-entry="timecurve" title="A1.6 TimeCurve">Time Curve</label>&nbsp;
+  <input type="checkbox" id="timeframe" hidden name="timeframe" class="cb-btn" value="timeframe" onclick="filterResults()"><label class="btn btn-info " for="timeframe" data-toggle="tooltip" data-entry="timeframe" title="A1.7 TimeFrame">Time Frame</label><br><br>
+  <input type="checkbox" id="timecircle" hidden name="timecircle" class="cb-btn" value="timecircle" onclick="filterResults()"><label class="btn btn-info " for="timecircle" data-toggle="tooltip" data-entry="timecircle" title="A1.8 TimeCircle">Time Circle</label>&nbsp;
+  <input type="checkbox" id="timetable" hidden name="timetable" class="cb-btn" value="timetable" onclick="filterResults()"><label class="btn btn-info " for="timetable" data-toggle="tooltip" data-entry="timetable" title="A1.9 TimeTable">Time Table</label><br><br>
+  </div>
+ 
+  <p><pre>B. Visual Variables </p></pre>
+
+  <div id="visualVar">
+  <input type="checkbox" id="color" hidden name="color" class="cb-btn" value="color" onclick="filterResults()"><label class="btn btn-info" for="color" data-toggle="tooltip" data-entry="color" title="B1.1 Color">Color</label>&nbsp;
+  <input type="checkbox" id="position" hidden name="position" class="cb-btn" value="position" onclick="filterResults()"><label class="btn btn-info" for="position" data-toggle="tooltip" data-entry="position" title="B1.2 Position">Position</label>&nbsp;
+  <input type="checkbox" id="orientation" hidden name="orientation" class="cb-btn" value="orientation" onclick="filterResults()"><label class="btn btn-info" for="orientation" data-toggle="tooltip" data-entry="orientation" title="B1.3 Orientation">Orientation</label>&nbsp;
+  <input type="checkbox" id="text" hidden name="text" class="cb-btn" value="text" onclick="filterResults()"><label class="btn btn-info" for="text" data-toggle="tooltip" data-entry="text" title="B1.4 Text">Text</label><br><br>
+</div>
   
- 
 
-  <hr class="line_style">
+  <p><pre>C.1 Spatial-Temporal Information </p></pre>
 
-  <p>B.1 Visual Representation - Spatial</p><br>
- 
+  <div id="spTempInfo"> 
+  <input type="checkbox" id="interaction" hidden name="interaction" class="cb-btn" value="interaction" onclick="filterResults()"><label class="btn btn-info" for="interaction" data-toggle="tooltip" data-entry="interaction" title="C1.1 Interaction">Interaction</label>&nbsp;
+  <input type="checkbox" id="layers" hidden name="layers" class="cb-btn" value="layers" onclick="filterResults()"><label class="btn btn-info" for="layers" data-toggle="tooltip" data-entry="layers" title="D1.3 Layers">Layers</label>&nbsp;
+  <input type="checkbox" id="animation" hidden name="animation" class="cb-btn" value="animation" onclick="filterResults()"><label class="btn btn-info" for="animation" data-toggle="tooltip" data-entry="animation" title="C1.4 Animation">Animation</label><br><br>
+  <input type="checkbox" id="seperate" hidden name="seperate" class="cb-btn" value="seperate" onclick="filterResults()"><label class="btn btn-info" for="seperate" data-toggle="tooltip" data-entry="seperate" title="C1.5 Seperate">Seperate</label>&nbsp;
+  <input type="checkbox" id="visual" hidden name="visual" class="cb-btn" value="visual" onclick="filterResults()"><label class="btn btn-info" for="visual" data-toggle="tooltip" data-entry="visual" title="C1.6 Visual">Visual</label><br>
+  </div>
+  
 
-  <input type="checkbox" id="otherMap" hidden class="cb-btn" name="otherMap"><label class="btn btn-primary active" onclick="loadOtherMap()" for="otherMap" >Other Map</label>&nbsp;
-  <input type="checkbox" id="cartographicMap" hidden class="cb-btn"><label class="btn btn-primary active" onclick="loadCartographicMap()"data-toggle="tooltip" data-entry="cartographicMap" title="B1.2 Cartographic Map" for="cartographicMap">Cartographic Map</label><br><br>
-  <input type="checkbox" id="scatterPlot" hidden class="cb-btn"><label class="btn btn-primary active" onclick="loadScatterPlot()" data-toggle="tooltip" data-entry="scatterPlot" title="B1.3 Scatter Plot" for="scatterPlot">Scatter Plot</label>&nbsp;
-  <input type="checkbox" id="circularChart" hidden class="cb-btn"><label class="btn btn-primary active" onclick="loadCircularChart()"data-toggle="tooltip" data-entry="circularChart" title="B1.4 Circular Chart" for="circularChart">Circular Chart</label>&nbsp;
-  <input type="button"class= "btn btn-primary active" value="All" data-toggle="tooltip" data-entry="All" title="All" id="all" onclick="window.location.reload();">
 
-  <hr class="line_style">
+  <p><pre>C.2 Coordinates</p></pre>
 
-  <p>B.2 Visual Representation - Temporal</p><br>
-  <input type="button" class= "btn btn-primary active" value="Time Line" data-toggle="tooltip" data-entry="timeline" title="B2.1 Time Line" id="timeline">
-  <input type="button" class= "btn btn-primary active" value="Time Curve" data-toggle="tooltip" data-entry="timecurve" title="B2.2 Time Curve" id="timecurve">
-  <input type="button" class= "btn btn-primary active" value="Time Frames" data-toggle="tooltip" data-entry="timeframes" title="B2.3 Time Frames" id="timeframes"><br><br>
-  <input type="button" class= "btn btn-primary active" value="Time Circle" data-toggle="tooltip" data-entry="timecircle" title="B2.4 Time Circle" id="timecircle">
-  <input type="button" class= "btn btn-primary active" value="Time Table" data-toggle="tooltip" data-entry="timetable" title="B2.5 Time Table" id="timetable">
-  <input type="button"class= "btn btn-primary active" value="All" data-toggle="tooltip" data-entry="All" title="All" id="all" onclick="window.location.reload();">
+  <div id="coordinatesFilter"> 
+  <input type="checkbox" id="rectangular" hidden name="rectangular" class="cb-btn" value="rectangular" onclick="filterResults()"><label class="btn btn-info" for="rectangular" data-toggle="tooltip" data-entry="rectangular" title="C2.1 rectangular">Rectangular</label>&nbsp;
+  <input type="checkbox" id="polar" hidden name="polar" class="cb-btn" value="polar" onclick="filterResults()"><label class="btn btn-info" for="polar" data-toggle="tooltip" data-entry="polar" title="C2.2 Polar">Polar</label>&nbsp;
+  <input type="checkbox" id="parallel" hidden name="parallel" class="cb-btn" value="parallel" onclick="filterResults()"><label class="btn btn-info" for="parallel" data-toggle="tooltip" data-entry="parallel" title="C2.3 parallel">Parallel</label><br>
+</div>
 
-  <hr class="line_style">
 
-  <p>C. Visual Variables</p><br>
-  <input type="button" class= "btn btn-primary active" value="Color" data-toggle="tooltip" data-entry="color" title="C1.1 Color" id="color" onclick="loadColor()">&nbsp;&nbsp;
-  <input type="button" class= "btn btn-primary active" value="Position" data-toggle="tooltip" data-entry="position" title="C1.2 Position" id="position" onclick="loadPosition()">&nbsp;&nbsp;
-  <input type="button" class= "btn btn-primary active" value="Orientation" data-toggle="tooltip" data-entry="orientation" title="C1.3 Orientation" id="orientation" onclick="loadOrientation()"><br><br>
-  <input type="button" class= "btn btn-primary active" value="Text" data-toggle="tooltip" data-entry="text" title="C1.4 Text" id="text" onclick="loadText()">
-  <input type="button"class= "btn btn-primary active" value="All" data-toggle="tooltip" data-entry="All" title="All" id="all" onclick="window.location.reload();">
+  <p><pre>D.1 Dimension </p></pre>
 
-  <hr class="line_style">
+  <div id="dimenFilter">
+  <input type="checkbox" id="2d" hidden name="2d" class="cb-btn" value="2d" onclick="filterResults()"><label class="btn btn-info" for="2d" data-toggle="tooltip" data-entry="2d" title="D1.1 2D">2D</label>&nbsp;
+  <input type="checkbox" id="3d" hidden name="3d" class="cb-btn" value="3d" onclick="filterResults()"><label class="btn btn-info" for="3d" data-toggle="tooltip" data-entry="3d" title="D1.2 3D">3D</label>&nbsp;
+  <input type="checkbox" id="4d" hidden name="4d" class="cb-btn" value="4d" onclick="filterResults()"><label class="btn btn-info" for="4d" data-toggle="tooltip" data-entry="4d" title="D1.3 4D">4D</label><br>
+</div>
+  
 
-  <p>D. Spatial-Temporal Information Syncronization</p><br>
-  <input type="button" class= "btn btn-primary active" value="Interaction" data-toggle="tooltip" data-entry="interaction" title="D1.1 Interaction" id="interaction">
-  <input type="button" class= "btn btn-primary active" value="coordinates" data-toggle="tooltip" data-entry="coordinates" title="D1.2 Coordinates" id="coordinates">
-  <input type="button" class= "btn btn-primary active" value="Layers" data-toggle="tooltip" data-entry="layers" title="D1.3 Layers" id="layers"><br><br>
-  <input type="button" class= "btn btn-primary active" value="Animation" data-toggle="tooltip" data-entry="animation" title="D1.4 Animation" id="animation">
-  <input type="button" class= "btn btn-primary active" value="Seperate" data-toggle="tooltip" data-entry="seperate" title="D1.5 Seperate" id="seperate">
-  <input type="button" class= "btn btn-primary active" value="Visual" data-toggle="tooltip" data-entry="visual" title="D1.6 Visual" id="visual">
-  <input type="button"class= "btn btn-primary active" value="All" data-toggle="tooltip" data-entry="All" title="All" id="all" onclick="window.location.reload();">
+  <p><pre>D.2 View </p></pre>
 
-  <hr class="line_style">
-
-  <p>E.1 Dimension</p><br>
-  <input type="button" class= "btn btn-primary active" value="2D" data-toggle="tooltip" data-entry="2d" title="E1.1 2D" id="2d">
-  <input type="button" class= "btn btn-primary active" value="3D" data-toggle="tooltip" data-entry="3d" title="E1.2 3D" id="3d">
-  <input type="button"class= "btn btn-primary active" value="All" data-toggle="tooltip" data-entry="All" title="All" id="all" onclick="window.location.reload();">
-
-  <hr class="line_style">
-
-  <p>E.2 View</p><br>
-  <input type="button" class= "btn btn-primary active" value="Single View" data-toggle="tooltip" data-entry="singleview" title="E2.1 Single View" id="singleView">
-  <input type="button" class= "btn btn-primary active" value="Multiple View" data-toggle="tooltip" data-entry="multipleview" title="E2.2 Multiple View" id="multipleView">
-  <input type="button"class= "btn btn-primary active" value="All" data-toggle="tooltip" data-entry="All" title="All" id="all" onclick="window.location.reload();">
-
+  <div id="viewFilter">
+  <input type="checkbox" id="singleView" hidden name="singleView" class="cb-btn" value="singleView" onclick="filterResults()"><label class="btn btn-info" for="singleView" data-toggle="tooltip" data-entry="singleView" title="D2.1 SingleView">Single View</label>&nbsp;
+  <input type="checkbox" id="multiView" hidden name="multiView" class="cb-btn" value="multiView" onclick="filterResults()"><label class="btn btn-info" for="multiView" data-toggle="tooltip" data-entry="multiView" title="D2.2 multiView">Multiple View</label><br>
+</div>
   </div>
 </div>
 
 <div class="display">
+  <div id = 'msg'></div>
   
-  <img id="myImg1" class="main_display" src="1.PNG" alt="1" onclick="loadImages()" data-toggle="tooltip" title="3D Information Visualization for Time Dependent Data on Maps(2005)">
+  <img id="myImg1" class="main_display spatial cartographicMap position temporal timecurve spatialTemporal rectangular visualization 3d singleView" src="1.PNG" alt="1" onclick="loadImages()" data-toggle="tooltip" title="3D Information Visualization for Time Dependent Data on Maps(2005)">
   <div id="myModal1" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -146,7 +146,7 @@
     </div>
   </div>
 
-  <img id="myImg2" class="main_display" src="2.PNG" alt="2" onclick="loadImages()" data-toggle="tooltip" title="A 3D Visualization of Multiple Time Series on Maps(2010)">
+  <img id="myImg2" class="main_display spatial cartographicMap position color temporal timeline spatialTemporal interaction layers seperate visualization 2d multiView sinleView" src="2.PNG" alt="2" onclick="loadImages()" data-toggle="tooltip" title="A 3D Visualization of Multiple Time Series on Maps(2010)">
   <div id="myModal2" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -181,7 +181,7 @@
     </div>
   </div>
 
-  <img id="myImg3" class="main_display" src="3.PNG" alt="3" onclick="loadImages()" data-toggle="tooltip" title="A GIS-based Bayesian approach for analyzing spatial–temporal
+  <img id="myImg3" class="main_display spatial cartographicMap position temporal timeframe text seperate visualization 3d multiView" src="3.PNG" alt="3" onclick="loadImages()" data-toggle="tooltip" title="A GIS-based Bayesian approach for analyzing spatial–temporal
   patterns of intra-city motor vehicle crashes(2007)">
   <div id="myModal3" class="modal">
       <div class="modal-content">
@@ -217,8 +217,7 @@
     </div>
   </div>
 
-  <img id="myImg4" class="main_display" src="4.PNG" alt="4" onclick="loadImages()" data-toggle="tooltip" title="A Hybrid Approach Combining the Multi-Temporal
-  Scale Spatio-Temporal Network(2018)">
+  <img id="myImg4" class="main_display spatialTemporal interaction" src="4.PNG" alt="4" onclick="loadImages()" data-toggle="tooltip" title="A Hybrid Approach Combining the Multi-Temporal Scale Spatio-Temporal Network(2018)">
   <div id="myModal4" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -232,8 +231,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">A Hybrid Approach Combining the Multi-Temporal
-              Scale Spatio-Temporal Network(2018)</h3>
+            <h3 class="media-heading">A Hybrid Approach Combining the Multi-Temporal Scale Spatio-Temporal Network(2018)</h3>
             <h5 class="media-heading">by Pengdong Zhang, Jasper Beernaerts and Nico Van de Weghe
             </h5>
             <h6>Zhang, P.; Beernaerts, J.; Van de Weghe, N. A Hybrid Approach Combining the Multi-Temporal Scale Spatio-Temporal Network with the Continuous Triangular Model for Exploring Dynamic Interactions in Movement Data: A Case Study of Football. ISPRS Int. J. Geo-Inf. 2018, 7, 31. https://doi.org/10.3390/ijgi7010031</h6>
@@ -254,7 +252,7 @@
     </div>
   </div>
 
-  <img id="myImg5" class="main_display" src="5.PNG" alt="5" onclick="loadImages()" data-toggle="tooltip" title="A hybrid approach to detect spatial-temporal outliers(2004)">
+  <img id="myImg5" class="main_display spatial spatialTemporal temporal otherMap cartographicMap color visual coordinates" src="5.PNG" alt="5" onclick="loadImages()" data-toggle="tooltip" title="A hybrid approach to detect spatial-temporal outliers(2004)">
   <div id="myModal5" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -326,7 +324,7 @@
     </div>
   </div>
 
-  <img id="myImg7" class="main_display" src="7.PNG" alt="7" onclick="loadImages()" data-toggle="tooltip" title="A Review of Temporal Data Visualizations Based on Space-Time Cube Operations(2014)">
+  <img id="myImg7" class="main_display spatial scatterPlot spatialTemporal visualization dimension 2d" src="7.PNG" alt="7" onclick="loadImages()" data-toggle="tooltip" title="A Review of Temporal Data Visualizations Based on Space-Time Cube Operations(2014)">
   <div id="myModal7" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -341,9 +339,8 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">A Review of Temporal Data Visualizations
-              Based on Space-Time Cube Operations(2014)</h3>
-            <h5 class="media-heading">by B.Bach, P. Dragicevic1, D. Archambault
+            <h3 class="media-heading">A Review of Temporal Data Visualizations Based on Space-Time Cube Operations(2014)</h3>
+            <h5 class="media-heading">by B. Bach, P. Dragicevic1, D. Archambault
             </h5>
             <h6>HAL-Inria https://hal.inria.fr/hal-01006140/</h6>
             <h5>URL: <a href="https://www.researchgate.net/publication/281050523_A_Review_of_Temporal_Data_Visualizations_Based_on_Space-Time_Cube_Operations" target="_blank">A_Review_of_Temporal_Data_Visualizations</a></h5>
@@ -363,7 +360,7 @@
     </div>
   </div>
 
-  <img id="myImg8" class="main_display" src="8.PNG" alt="8" onclick="loadImages()" data-toggle="tooltip" title="A semantic-enhanced trajectory visual analytics for digital forensic(2015)">
+  <img id="myImg8" class="main_display spatial cartographicMap position text temporal timetable spatialTemporal layers visualization 2d singleView" src="8.PNG" alt="8" onclick="loadImages()" data-toggle="tooltip" title="A semantic-enhanced trajectory visual analytics for digital forensic(2015)">
   <div id="myModal8" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -400,7 +397,7 @@
     </div>
   </div>
 
-  <img id="myImg9" class="main_display" src="9.PNG" alt="9" onclick="loadImages()" data-toggle="tooltip" title="A Spatio-Temporal Entropy-based Framework for the Detection of Trajectories(2018)">
+  <img id="myImg9" class="main_display color position 2d" src="9.PNG" alt="9" onclick="loadImages()" data-toggle="tooltip" title="A Spatio-Temporal Entropy-based Framework for the Detection of Trajectories(2018)">
   <div id="myModal9" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -415,8 +412,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">A Spatio-Temporal Entropy-based Framework for the
-              Detection of Trajectories(2018)</h3>
+            <h3 class="media-heading">A Spatio-Temporal Entropy-based Framework for the Detection of Trajectories(2018)</h3>
             <h5 class="media-heading">by Amin Hosseinpoor Milaghardan, Rahim Ali Abbaspour
             </h5>
             <h6>Hosseinpoor Milaghardan, A.; Ali Abbaspour, R.; Claramunt, C. A Spatio-Temporal Entropy-based Framework for the Detection of Trajectories Similarity. Entropy 2018, 20, 490. https://doi.org/10.3390/e20070490</h6>
@@ -437,7 +433,7 @@
     </div>
   </div>
 
-  <img id="myImg10" class="main_display" src="10.PNG" alt="10" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Colormaps in Visualization(2015)">
+  <img id="myImg10" class="main_display scatterPlot color 2d" src="10.PNG" alt="10" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Colormaps in Visualization(2015)">
   <div id="myModal10" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -475,7 +471,8 @@
     </div>
   </div>
 
-  <img id="myImg11" class="main_display" src="11.PNG" alt="11" onclick="loadImages()" data-toggle="tooltip" title="A survey of competitive sports data visualization and visual analysis(2020)">
+  <img id="myImg11" class="main_display scatterPlot timeline color position interaction
+  " src="11.PNG" alt="11" onclick="loadImages()" data-toggle="tooltip" title="A survey of competitive sports data visualization and visual analysis(2020)">
   <div id="myModal11" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -490,8 +487,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">A survey of competitive sports data visualization
-              and visual analysis(2020)</h3>
+            <h3 class="media-heading">A survey of competitive sports data visualization and visual analysis(2020)</h3>
             <h5 class="media-heading">by Meng Du, Xiaoru Yuan
             </h5><h6>Du, M., Yuan, X. A survey of competitive sports data visualization and visual analysis. J Vis (2020). https://doi.org/10.1007/s12650-020-00687-2</h6>
             <h5>URL: <a href="https://doi.org/10.1007/s12650-020-00687-2" target="_blank">https://doi.org/10.1007/s12650-020-00687-2</a></h5>
@@ -511,7 +507,7 @@
     </div>
   </div>
 
-  <img id="myImg12" class="main_display" src="12.PNG" alt="12" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Methods for Visualizing Spatio-temporal Data(2020)">
+  <img id="myImg12" class="main_display spatialTemporal" src="12.PNG" alt="12" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Methods for Visualizing Spatio-temporal Data(2020)">
   <div id="myModal12" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -581,7 +577,7 @@
     </div>
   </div>
 
-  <img id="myImg14" class="main_display" src="14.PNG" alt="14" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Multi-Space Techniques in Spatio-Temporal Simulation
+  <img id="myImg14" class="main_display scatterPlot 2d color interaction singleView" src="14.PNG" alt="14" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Multi-Space Techniques in Spatio-Temporal Simulation
   Data Visualization(2019)">
   <div id="myModal14" class="modal">
       <div class="modal-content">
@@ -597,8 +593,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">A Survey of Multi-Space Techniques in Spatio-Temporal Simulation
-              Data Visualization(2019)</h3>
+            <h3 class="media-heading">A Survey of Multi-Space Techniques in Spatio-Temporal Simulation Data Visualization(2019)</h3>
             <h5 class="media-heading">by Xueyi Chen, Liming Shen, Ziqi Sha, Siming Chen
             </h5><h6>Visual Informatics Volume 3, Issue 3, September 2019 http://www.sciencedirect.com/science/article/pii/S2468502X19300452</h6>
             <h5>URL: <a href="https://doi.org/10.1016/j.visinf.2019.08.002" target="_blank">https://doi.org/10.1016/j.visinf.2019.08.002</a></h5>
@@ -618,7 +613,7 @@
     </div>
   </div>
 
-  <img id="myImg15" class="main_display" src="15.PNG" alt="14" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Traffic Data Visualization(2015)">
+  <img id="myImg15" class="main_display spatial position temporal timeline spatialTemporal interaction rectangular 2d singleView" src="15.PNG" alt="14" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Traffic Data Visualization(2015)">
   <div id="myModal15" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -653,7 +648,7 @@
     </div>
   </div>
 
-  <img id="myImg16" class="main_display" src="16.PNG" alt="16" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Visual Analytics for Public Health(2020)">
+  <img id="myImg16" class="main_display cartographicMap scatterPlot color position visual 2d" src="16.PNG" alt="16" onclick="loadImages()" data-toggle="tooltip" title="A Survey of Visual Analytics for Public Health(2020)">
   <div id="myModal16" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -689,7 +684,7 @@
   </div>
 
   
-  <img id="myImg17" class="main_display" src="17.PNG" alt="17" onclick="loadImages()" data-toggle="tooltip" title="A Survey on Data Mining Methods for Clustering Complex Spatiotemporal Data(2017)">
+  <img id="myImg17" class="main_display position" src="17.PNG" alt="17" onclick="loadImages()" data-toggle="tooltip" title="A Survey on Data Mining Methods for Clustering Complex Spatiotemporal Data(2017)">
   <div id="myModal17" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -722,7 +717,7 @@
     </div>
   </div>
 
-  <img id="myImg18" class="main_display" src="18.PNG" alt="18" onclick="loadImages()" data-toggle="tooltip" title="A Survey on Spatial Prediction Methods(2018)">
+  <img id="myImg18" class="main_display spatial visual interaction coordinates layers" src="18.PNG" alt="18" onclick="loadImages()" data-toggle="tooltip" title="A Survey on Spatial Prediction Methods(2018)">
   <div id="myModal18" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -752,7 +747,7 @@
      </div>
   </div>
 
-  <img id="myImg19" class="main_display" src="19.PNG" alt="19" onclick="loadImages()" data-toggle="tooltip" title="A topic modeling framework for spatio-temporal information
+  <img id="myImg19" class="main_display text layers" src="19.PNG" alt="19" onclick="loadImages()" data-toggle="tooltip" title="A topic modeling framework for spatio-temporal information
   management(2020)">
   <div id="myModal19" class="modal">
       <div class="modal-content">
@@ -786,7 +781,7 @@
      </div>
   </div>
 
-  <img id="myImg20" class="main_display" src="20.PNG" alt="20" onclick="loadImages()" data-toggle="tooltip" title="A Visual Analytics Approach for Station-Based Air
+  <img id="myImg20" class="main_display spatial cartographicMap position temporal timetable spatialTemporal layers visualization 2d singleView" src="20.PNG" alt="20" onclick="loadImages()" data-toggle="tooltip" title="A Visual Analytics Approach for Station-Based Air
   Quality Data(2017)">
   <div id="myModal20" class="modal">
     <div class="modal-content">
@@ -818,7 +813,7 @@
      </div>
   </div>
 
-  <img id="myImg21" class="main_display" src="21.PNG" alt="21" onclick="loadImages()" data-toggle="tooltip" title="A Visualization Platform for Spatio-temporal Data: a Data Intensive Computation Framework(2015)">
+  <img id="myImg21" class="main_display spatial cartographicMap position temporal text spatialTemporal interaction seperate visualization 3d multiView" src="21.PNG" alt="21" onclick="loadImages()" data-toggle="tooltip" title="A Visualization Platform for Spatio-temporal Data: a Data Intensive Computation Framework(2015)">
   <div id="myModal21" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -848,7 +843,7 @@
      </div>
   </div>
 
-  <img id="myImg22" class="main_display" src="22.PNG" alt="22" onclick="loadImages()" data-toggle="tooltip" title="A Visualization System for Space-Time and
+  <img id="myImg22" class="main_display spatial position temporal timeline spatialTemporal interaction rectangular 2d singleView" src="22.PNG" alt="22" onclick="loadImages()" data-toggle="tooltip" title="A Visualization System for Space-Time and
   Multivariate Patterns (VIS-STAMP)(2006)">
   <div id="myModal22" class="modal">
     <div class="modal-content">
@@ -863,8 +858,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">A Visualization System for Space-Time and
-              Multivariate Patterns (VIS-STAMP)(2006)</h3>
+            <h3 class="media-heading">A Visualization System for Space-Time and Multivariate Patterns (VIS-STAMP)(2006)</h3>
               <h5 class="media-heading">by Diansheng Guo, Jin Chen, A. M. MacEachren, Ke Liao </h5>
             <h6 class="media-heading">Diansheng Guo, Jin Chen, A. M. MacEachren and Ke Liao, "A Visualization System for Space-Time and Multivariate Patterns (VIS-STAMP)," in IEEE Transactions on Visualization and Computer Graphics, vol. 12, no. 6, pp. 1461-1474, Nov.-Dec. 2006</h6>
             <h5>URL: <a href="https://doi.org/10.1109/TVCG.2006.84" target="_blank">https://doi.org/10.1109/TVCG.2006.84</a></h5>
@@ -880,7 +874,7 @@
      </div>
   </div>
 
-  <img id="myImg23" class="main_display" src="23.PNG" alt="23" onclick="loadImages()" data-toggle="tooltip" title="Activities, ringmaps and geovisualization of
+  <img id="myImg23" class="main_display spatial cartographicMap position temporal timeline timecircle orientation spatialTemporal polar visualization 3d singleView" src="23.PNG" alt="23" onclick="loadImages()" data-toggle="tooltip" title="Activities, ringmaps and geovisualization of
   large human movement fields(2008)">
   <div id="myModal23" class="modal">
     <div class="modal-content">
@@ -911,7 +905,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg24" class="main_display" src="24.PNG" alt="24" onclick="loadImages()" data-toggle="tooltip" title="An Evaluation of Space Time Cube Representation of Spatiotemporal Patterns(2018)">
+  <img id="myImg24" class="main_display spatial otherMap position temporal timeline text spatialTemporal coordinates layers visualization 2d singleView" src="24.PNG" alt="24" onclick="loadImages()" data-toggle="tooltip" title="An Evaluation of Space Time Cube Representation of Spatiotemporal Patterns(2018)">
   <div id="myModal24" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -926,7 +920,7 @@
           </div>
           <div class="media-body" style='padding-left: 20px;'>
             <h3 class="media-heading">An Evaluation of Space Time Cube Representation of Spatiotemporal Patterns(2009)</h3>
-            <h5 class="media-heading">by P. O. Kristensson </h5>
+            <h5 class="media-heading">by Per Ola Kristensson, Nils Dahlback, Daniel Anundi </h5>
             <h6 class="media-heading">P. O. Kristensson et al., "An Evaluation of Space Time Cube Representation of Spatiotemporal Patterns," in IEEE Transactions on Visualization and Computer Graphics, vol. 15, no. 4, pp. 696-702, July-Aug. 2009</h6>
             <h5>URL: <a href="https://doi.org/10.1109/TVCG.2008.194" target="_blank">https://doi.org/10.1109/TVCG.2008.194</a></h5>
             <h5><a href="Kristensson_Dahlback_Anundi.tex" target="_blank" downlaod>
@@ -940,8 +934,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg25" class="main_display" src="25.PNG" alt="25" onclick="loadImages()" data-toggle="tooltip" title="An Event-Based Conceptual Model for Context-Aware Movement
-  Analysis(2011)">
+  <img id="myImg25" class="main_display spatial otherMap position temporal timeline spatialTemporal interaction seperate visualization 2d multiView" src="25.PNG" alt="25" onclick="loadImages()" data-toggle="tooltip" title="An Event-Based Conceptual Model for Context-Aware Movement Analysis(2011)">
   <div id="myModal25" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -972,7 +965,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg26" class="main_display" src="26.PNG" alt="26" onclick="loadImages()" data-toggle="tooltip" title="An Exploratory Analysis of the Effects of Spatial and Temporal Scale and Transportation Mode on Anonymity in Human Mobility Trajectories(2018)">
+  <img id="myImg26" class="main_display coordinates" src="26.PNG" alt="26" onclick="loadImages()" data-toggle="tooltip" title="An Exploratory Analysis of the Effects of Spatial and Temporal Scale and Transportation Mode on Anonymity in Human Mobility Trajectories(2018)">
   <div id="myModal26" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1001,7 +994,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg27" class="main_display" src="27.PNG" alt="27" onclick="loadImages()" data-toggle="tooltip" title="An Interactive Web Based Spatio-Temporal Visualization System(2013)">
+  <img id="myImg27" class="main_display spatial cartographicMap position temporal timeframe text spatialTemporal interaction seperate visualization 2d multiView" src="27.PNG" alt="27" onclick="loadImages()" data-toggle="tooltip" title="An Interactive Web Based Spatio-Temporal Visualization System(2013)">
   <div id="myModal27" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1030,7 +1023,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg28" class="main_display" src="28.PNG" alt="28" onclick="loadImages()" data-toggle="tooltip" title="Applying GIS to Identify the Spatial and Temporal Patterns of Road Accidents Using Spatial Statistics: case study(2017)">
+  <img id="myImg28" class="main_display spatial temporal" src="28.PNG" alt="28" onclick="loadImages()" data-toggle="tooltip" title="Applying GIS to Identify the Spatial and Temporal Patterns of Road Accidents Using Spatial Statistics: case study(2017)">
   <div id="myModal28" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1059,7 +1052,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg29" class="main_display" src="29.PNG" alt="29" onclick="loadImages()" data-toggle="tooltip" title="Axes-Based Visualizations with Radial Layouts(2004)">
+  <img id="myImg29" class="main_display coordinates circularChart interaction animation 3d" src="29.PNG" alt="29" onclick="loadImages()" data-toggle="tooltip" title="Axes-Based Visualizations with Radial Layouts(2004)">
   <div id="myModal29" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1088,7 +1081,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg30" class="main_display" src="30.PNG" alt="30" onclick="loadImages()" data-toggle="tooltip" title="Baseball4D: A Tool for Baseball Game Reconstruction & Visualization(2014)">
+  <img id="myImg30" class="main_display spatial otherMap temporal timeline text spatialTemporal coordinates animation visualization 4d multiView" src="30.PNG" alt="30" onclick="loadImages()" data-toggle="tooltip" title="Baseball4D: A Tool for Baseball Game Reconstruction & Visualization(2014)">
   <div id="myModal30" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1117,7 +1110,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg31" class="main_display" src="31.PNG" alt="31" onclick="loadImages()" data-toggle="tooltip" title="BKViz: A Basketball Visual Analysis Tool(2016)">
+  <img id="myImg31" class="main_display spatial otherMap temporal timecurve text spatialTemporal animation visualization 2d multiView" src="31.PNG" alt="31" onclick="loadImages()" data-toggle="tooltip" title="BKViz: A Basketball Visual Analysis Tool(2016)">
   <div id="myModal31" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1146,7 +1139,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg32" class="main_display" src="32.PNG" alt="32" onclick="loadImages()" data-toggle="tooltip" title="Building Linked Spatio-Temporal Data from Vectorized Historical Maps(2020)">
+  <img id="myImg32" class="main_display spatial cartographicMap position temporal timeframe text spatialTemporal visual visualization 2d multiView" src="32.PNG" alt="32" onclick="loadImages()" data-toggle="tooltip" title="Building Linked Spatio-Temporal Data from Vectorized Historical Maps(2020)">
   <div id="myModal32" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1161,7 +1154,7 @@
           </div>
           <div class="media-body" style='padding-left: 20px;'>
             <h3 class="media-heading">Building Linked Spatio-Temporal Data from Vectorized Historical Maps(2020)</h3>
-              <h5 class="media-heading">by Shbita B, Knoblock C.A, Duan W, Chiang YY, Uhl J.H, Leyk S</h5>
+              <h5 class="media-heading">by Shbita B, Knoblock Craig.A, Duan W, Chiang YY, Uhl J.H, Leyk S</h5>
             <h6 class="media-heading">Shbita B., Knoblock C.A., Duan W., Chiang YY., Uhl J.H., Leyk S. (2020) Building Linked Spatio-Temporal Data from Vectorized Historical Maps. In: Harth A. et al. (eds) The Semantic Web. ESWC 2020. Lecture Notes in Computer Science, vol 12123. Springer, Cham. </h6>
             <h5>URL: <a href="https://doi.org/10.1007/978-3-030-49461-2_24" target="_blank">https://doi.org/10.1007/978-3-030-49461-2_24</a></h5>
             <h5><a href="Shbita_Basel.tex" target="_blank" downlaod>
@@ -1175,7 +1168,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg33" class="main_display" src="33.PNG" alt="33" onclick="loadImages()" data-toggle="tooltip" title="Contour Boxplots: A Method for Characterizing Uncertainty in Feature Sets from Simulation Ensembles(2013)">
+  <img id="myImg33" class="main_display color position animation" src="33.PNG" alt="33" onclick="loadImages()" data-toggle="tooltip" title="Contour Boxplots: A Method for Characterizing Uncertainty in Feature Sets from Simulation Ensembles(2013)">
   <div id="myModal33" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1205,7 +1198,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg34" class="main_display" src="34.PNG" alt="34" onclick="loadImages()" data-toggle="tooltip" title="Curve Boxplot: Generalization of Boxplot for Ensembles of Curves(2014)">
+  <img id="myImg34" class="main_display color position coordinates" src="34.PNG" alt="34" onclick="loadImages()" data-toggle="tooltip" title="Curve Boxplot: Generalization of Boxplot for Ensembles of Curves(2014)">
   <div id="myModal34" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1235,7 +1228,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg35" class="main_display" src="35.PNG" alt="35" onclick="loadImages()" data-toggle="tooltip" title="Data mining for the discovery of ocean climate indices(2002)">
+  <img id="myImg35" class="main_display visual" src="35.PNG" alt="35" onclick="loadImages()" data-toggle="tooltip" title="Data mining for the discovery of ocean climate indices(2002)">
   <div id="myModal35" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1265,8 +1258,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg36" class="main_display" src="36.PNG" alt="36" onclick="loadImages()" data-toggle="tooltip" title="Design of a Real Time Visual Analytics Support Tool for Conflict
-  Detection and Resolution in Air Traffic Control(2020)">
+  <img id="myImg36" class="main_display interaction 2d" src="36.PNG" alt="36" onclick="loadImages()" data-toggle="tooltip" title="Design of a Real Time Visual Analytics Support Tool for Conflict Detection and Resolution in Air Traffic Control(2020)">
   <div id="myModal36" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1297,7 +1289,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg37" class="main_display" src="37.PNG" alt="37" onclick="loadImages()" data-toggle="tooltip" title="Developing a regional classifier to track patient needs in medical literature using spiral timelines on a geographical map(2017)">
+  <img id="myImg37" class="main_display timeline position multiView" src="37.PNG" alt="37" onclick="loadImages()" data-toggle="tooltip" title="Developing a regional classifier to track patient needs in medical literature using spiral timelines on a geographical map(2017)">
   <div id="myModal37" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1327,8 +1319,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg38" class="main_display" src="38.PNG" alt="38" onclick="loadImages()" data-toggle="tooltip" title="Detection, Tracking, and Visualization of Spatial
-  Event Clusters for Real Time Monitoring(2015)">
+  <img id="myImg38" class="main_display spatial cartographicMap position temporal timecurve spatialTemporal layers visualization 2d singleView" src="38.PNG" alt="38" onclick="loadImages()" data-toggle="tooltip" title="Detection, Tracking, and Visualization of Spatial Event Clusters for Real Time Monitoring(2017)">
   <div id="myModal38" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1359,8 +1350,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg39" class="main_display" src="39.PNG" alt="39" onclick="loadImages()" data-toggle="tooltip" title="Enhancing Parallel Coordinates: Statistical Visualizations for
-  Analyzing Soccer Data(2016)">
+  <img id="myImg39" class="main_display parallel 2d interaction multiView" src="39.PNG" alt="39" onclick="loadImages()" data-toggle="tooltip" title="Enhancing Parallel Coordinates: Statistical Visualizations for Analyzing Soccer Data(2016)">
   <div id="myModal39" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1391,7 +1381,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg40" class="main_display" src="40.PNG" alt="40" onclick="loadImages()" data-toggle="tooltip" title="Ensemble-Vis: A Framework for the Statistical Visualization of Ensemble Data(2009)">
+  <img id="myImg40" class="main_display coordinates parallel 3d multiView" src="40.PNG" alt="40" onclick="loadImages()" data-toggle="tooltip" title="Ensemble-Vis: A Framework for the Statistical Visualization of Ensemble Data(2009)">
   <div id="myModal40" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1422,7 +1412,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg41" class="main_display" src="41.PNG" alt="41" onclick="loadImages()" data-toggle="tooltip" title="Exploratory spatio-temporal visualization: an analytical review(2003)">
+  <img id="myImg41" class="main_display spatial cartographicMap position temporal timeline text spatialTemporal interaction rectangular layers visualization 2d singleView" src="41.PNG" alt="41" onclick="loadImages()" data-toggle="tooltip" title="Exploratory spatio-temporal visualization: an analytical review(2003)">
   <div id="myModal41" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1452,7 +1442,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg42" class="main_display" src="42.PNG" alt="42" onclick="loadImages()" data-toggle="tooltip" title="Exploratory spatio-temporal data mining and visualization(2007)">
+  <img id="myImg42" class="main_display spatial cartographicMap position temporal timeline spatialTemporal interaction seperate visualization 3d multiView" src="42.PNG" alt="42" onclick="loadImages()" data-toggle="tooltip" title="Exploratory spatio-temporal data mining and visualization(2007)">
   <div id="myModal42" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1483,7 +1473,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg43" class="main_display" src="43.PNG" alt="43" onclick="loadImages()" data-toggle="tooltip" title="ForVizor: Visualizing Spatio-Temporal Team Formations in Soccer(2018)">
+  <img id="myImg43" class="main_display interaction visual 2d" src="43.PNG" alt="43" onclick="loadImages()" data-toggle="tooltip" title="ForVizor: Visualizing Spatio-Temporal Team Formations in Soccer(2018)">
   <div id="myModal43" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1513,7 +1503,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg44" class="main_display" src="44.PNG" alt="44" onclick="loadImages()" data-toggle="tooltip" title="From Social Sensor Data to Collective Human Behaviour Patterns(2012)">
+  <img id="myImg44" class="main_display interaction" src="44.PNG" alt="44" onclick="loadImages()" data-toggle="tooltip" title="From Social Sensor Data to Collective Human Behaviour Patterns(2012)">
   <div id="myModal44" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1543,7 +1533,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg45" class="main_display" src="45.PNG" alt="45" onclick="loadImages()" data-toggle="tooltip" title="FUNNEL: Automatic Mining of Spatially Coevolving Epidemics(2014)">
+  <img id="myImg45" class="main_display scatterPlot" src="45.PNG" alt="45" onclick="loadImages()" data-toggle="tooltip" title="FUNNEL: Automatic Mining of Spatially Coevolving Epidemics(2014)">
   <div id="myModal45" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1573,7 +1563,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg46" class="main_display" src="46.PNG" alt="46" onclick="loadImages()" data-toggle="tooltip" title="GameFlow: Narrative Visualization of NBA Basketball Games(2016)">
+  <img id="myImg46" class="main_display visual" src="46.PNG" alt="46" onclick="loadImages()" data-toggle="tooltip" title="GameFlow: Narrative Visualization of NBA Basketball Games(2016)">
   <div id="myModal46" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1633,7 +1623,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg48" class="main_display" src="48.PNG" alt="48" onclick="loadImages()" data-toggle="tooltip" title="GeoAnalytics Visual Inquiry and Filtering Tools in Parallel Coordinates Plots(2007)">
+  <img id="myImg48" class="main_display parallel coordinates interaction scatterPlot 2d" src="48.PNG" alt="48" onclick="loadImages()" data-toggle="tooltip" title="GeoAnalytics Visual Inquiry and Filtering Tools in Parallel Coordinates Plots(2007)">
   <div id="myModal48" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1663,7 +1653,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg49" class="main_display" src="49.PNG" alt="49" onclick="loadImages()" data-toggle="tooltip" title="GeoTime Information Visualization(2004)">
+  <img id="myImg49" class="main_display spatial cartographicMap position temporal timeline spatialTemporal interaction coordinates visualization 3d singleView" src="49.PNG" alt="49" onclick="loadImages()" data-toggle="tooltip" title="GeoTime Information Visualization(2004)">
   <div id="myModal49" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1693,7 +1683,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg50" class="main_display" src="50.PNG" alt="50" onclick="loadImages()" data-toggle="tooltip" title="Geovisual analytics to enhance spatial scan statistic interpretation: an analysis of U.S. cervical cancer mortality(2008)">
+  <img id="myImg50" class="main_display otherMap cartographicMap interaction" src="50.PNG" alt="50" onclick="loadImages()" data-toggle="tooltip" title="Geovisual analytics to enhance spatial scan statistic interpretation: an analysis of U.S. cervical cancer mortality(2008)">
   <div id="myModal50" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1723,7 +1713,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg51" class="main_display" src="51.PNG" alt="51" onclick="loadImages()" data-toggle="tooltip" title="Geovisualization and Geographical Analysis for Fire Prevention(2008)">
+  <img id="myImg51" class="main_display spatial otherMap cartographicMap position temporal timeframe text visualization 2d multiView" src="51.PNG" alt="51" onclick="loadImages()" data-toggle="tooltip" title="Geovisualization and Geographical Analysis for Fire Prevention(2020)">
   <div id="myModal51" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1737,8 +1727,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">Geovisualization and Geographical Analysis for
-              Fire Prevention(2008)</h3>
+            <h3 class="media-heading">Geovisualization and Geographical Analysis for Fire Prevention(2020)</h3>
               <h5 class="media-heading">by Nicklas Guldaker
                 </h5>
             <h6 class="media-heading">Guldåker, N. Geovisualization and Geographical Analysis for Fire Prevention. ISPRS Int. J. Geo-Inf. 2020, 9, 355.</h6>
@@ -1755,7 +1744,7 @@
      </div>
   </div>
 
-  <img id="myImg52" class="main_display" src="52.PNG" alt="47" onclick="loadImages()" data-toggle="tooltip" title="Geovisualizing with Ring Maps(2016)">
+  <img id="myImg52" class="main_display spatial cartographicMap position temporal timecircle polar spatialTemporal visual visualization 2d singleView" src="52.PNG" alt="47" onclick="loadImages()" data-toggle="tooltip" title="Geovisualizing with Ring Maps(2016)">
   <div id="myModal52" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1786,7 +1775,7 @@
      </div>
   </div>
 
-  <img id="myImg53" class="main_display" src="53.PNG" alt="53" onclick="loadImages()" data-toggle="tooltip" title="Group-Wise Similarity and Classification of Aggregate Scanpaths(2010)">
+  <img id="myImg53" class="main_display temporal" src="53.PNG" alt="53" onclick="loadImages()" data-toggle="tooltip" title="Group-Wise Similarity and Classification of Aggregate Scanpaths(2010)">
   <div id="myModal53" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1816,7 +1805,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg54" class="main_display" src="54.PNG" alt="54" onclick="loadImages()" data-toggle="tooltip" title="ID-Viewer: a visual analytics architecture for
+  <img id="myImg54" class="main_display spatial cartographicMap position temporal text spatialTemporal interaction seperate visualization 2d multiView" src="54.PNG" alt="54" onclick="loadImages()" data-toggle="tooltip" title="ID-Viewer: a visual analytics architecture for
   infectious diseases surveillance and response management in Pakistan(2016)">
   <div id="myModal54" class="modal">
     <div class="modal-content">
@@ -1848,7 +1837,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg55" class="main_display" src="55.PNG" alt="55" onclick="loadImages()" data-toggle="tooltip" title="Interactive Analysis of Event Data Using Space-Time Cube(2004)">
+  <img id="myImg55" class="main_display spatial cartographicMap position temporal timeline text spatialTemporal interaction rectangular layers visualization 2d singleView" src="55.PNG" alt="55" onclick="loadImages()" data-toggle="tooltip" title="Interactive Analysis of Event Data Using Space-Time Cube(2004)">
   <div id="myModal55" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1878,7 +1867,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg56" class="main_display" src="56.PNG" alt="56" onclick="loadImages()" data-toggle="tooltip" title="Interactive geovisualization of activity-travel patterns using
+  <img id="myImg56" class="main_display spatial cartographicMap position temporal timeline spatialTemporal coordinates visualization 3d singleView" src="56.PNG" alt="56" onclick="loadImages()" data-toggle="tooltip" title="Interactive geovisualization of activity-travel patterns using
   three-dimensional geographical information systems(2000)">
   <div id="myModal56" class="modal">
     <div class="modal-content">
@@ -1911,7 +1900,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg57" class="main_display" src="57.PNG" alt="57" onclick="loadImages()" data-toggle="tooltip" title="Interactive Visual Tools to Explore Spatio-Temporal
+  <img id="myImg57" class="main_display spatial cartographicMap position temporal text spatialTemporal layers visualization singleView 2d" src="57.PNG" alt="57" onclick="loadImages()" data-toggle="tooltip" title="Interactive Visual Tools to Explore Spatio-Temporal
   Variation(2004)">
   <div id="myModal57" class="modal">
     <div class="modal-content">
@@ -1926,9 +1915,8 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">Interactive Visual Tools to Explore Spatio-Temporal
-              Variation(2004)</h3>
-              <h5 class="media-heading">by Gennedy Adrienko & Natalia Adrienko
+            <h3 class="media-heading">Interactive Visual Tools to Explore Spatio-Temporal Variation(2004)</h3>
+              <h5 class="media-heading">by Gennady Adrienko & Natalia Adrienko
                 </h5>
             <h6 class="media-heading">AVI '04: Proceedings of the working conference on Advanced visual interfaces May 2004</h6>
             <h5>URL: <a href="https://doi.org/10.1145/989863.989940" target="_blank">https://doi.org/10.1145/989863.989940</a></h5>
@@ -1943,7 +1931,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg58" class="main_display" src="58.PNG" alt="58" onclick="loadImages()" data-toggle="tooltip" title="Interactive Visualization of Multivariate Trajectory Data with Density Maps(2011)">
+  <img id="myImg58" class="main_display spatial otherMap position temporal color spatialTemporal visual visualization 2d singleView" src="58.PNG" alt="58" onclick="loadImages()" data-toggle="tooltip" title="Interactive Visualization of Multivariate Trajectory Data with Density Maps(2011)">
   <div id="myModal58" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1973,7 +1961,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg59" class="main_display" src="59.PNG" alt="59" onclick="loadImages()" data-toggle="tooltip" title="Interactive Visualization of Weather and Ship Data(2009)">
+  <img id="myImg59" class="main_display spatial cartographicMap position temporal timecurve spatialTemporal visual visualization 2d singleView" src="59.PNG" alt="59" onclick="loadImages()" data-toggle="tooltip" title="Interactive Visualization of Weather and Ship Data(2009)">
   <div id="myModal59" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2003,8 +1991,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg60" class="main_display" src="60.PNG" alt="60" onclick="loadImages()" data-toggle="tooltip" title="Knowledge-Assisted Ranking:A Visual Analytic Application for
-  Sports Event Data(2015)">
+  <img id="myImg60" class="main_display interaction visual parallel" src="60.PNG" alt="60" onclick="loadImages()" data-toggle="tooltip" title="Knowledge-Assisted Ranking:A Visual Analytic Application for Sports Event Data(2015)">
   <div id="myModal60" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2035,7 +2022,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg61" class="main_display" src="61.PNG" alt="61" onclick="loadImages()" data-toggle="tooltip" title="LAHVA: Linked Animal-Human Health Visual Analytics(2007)">
+  <img id="myImg61" class="main_display spatial cartographicMap position temporal timeline spatialTemporal seperate visualization 2d singleView" src="61.PNG" alt="61" onclick="loadImages()" data-toggle="tooltip" title="LAHVA: Linked Animal-Human Health Visual Analytics(2007)">
   <div id="myModal61" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2065,7 +2052,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg62" class="main_display" src="62.PNG" alt="62" onclick="loadImages()" data-toggle="tooltip" title="Learning Spatial-Temporal Varying Graphs with Applications to Climate Data Analysis(2010)">
+  <img id="myImg62" class="main_display spatialTemporal" src="62.PNG" alt="62" onclick="loadImages()" data-toggle="tooltip" title="Learning Spatial-Temporal Varying Graphs with Applications to Climate Data Analysis(2010)">
   <div id="myModal62" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2095,7 +2082,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg63" class="main_display" src="63.PNG" alt="63" onclick="loadImages()" data-toggle="tooltip" title="Mapping Fine-Scale Urban Spatial Population Distribution Based on High-Resolution Stereo Pair Images, Points of Interest, and Land Cover Data(2020)">
+  <img id="myImg63" class="main_display spatial" src="63.PNG" alt="63" onclick="loadImages()" data-toggle="tooltip" title="Mapping Fine-Scale Urban Spatial Population Distribution Based on High-Resolution Stereo Pair Images, Points of Interest, and Land Cover Data(2020)">
   <div id="myModal63" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2125,7 +2112,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg64" class="main_display" src="64.PNG" alt="64" onclick="loadImages()" data-toggle="tooltip" title="Methods for the Visualization of Clustered Climate Data(2004)">
+  <img id="myImg64" class="main_display spatial position scatterPlot temporal timeframe text spatialTemporal seperate visualization 2d multiView" src="64.PNG" alt="64" onclick="loadImages()" data-toggle="tooltip" title="Methods for the Visualization of Clustered Climate Data(2004)">
   <div id="myModal64" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2139,8 +2126,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">Methods for the Visualization
-              of Clustered Climate Data(2004)</h3>
+            <h3 class="media-heading">Methods for the Visualization of Clustered Climate Data(2004)</h3>
               <h5 class="media-heading">by Thomas Nocke, Heidrun Schumann, Uwe Bohm
               </h5>
             <h6 class="media-heading">Nocke, T., Schumann, H. & Böhm, U. Methods for the visualization of clustered climate data. Computational Statistics 19, 75–94 (2004)</h6>
@@ -2156,7 +2142,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg65" class="main_display" src="65.PNG" alt="65" onclick="loadImages()" data-toggle="tooltip" title="Multiple Temporal Axes for Visualising the Behaviour of Elders Living Alone(2013)">
+  <img id="myImg65" class="main_display spatial circularChart color orientation temporal timeline position spatialTemporal polar visual visualization 2d singleView" src="65.PNG" alt="65" onclick="loadImages()" data-toggle="tooltip" title="Multiple Temporal Axes for Visualising the Behaviour of Elders Living Alone(2013)">
   <div id="myModal65" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2187,7 +2173,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg66" class="main_display" src="66.PNG" alt="66" onclick="loadImages()" data-toggle="tooltip" title="Network Discovery via Constrained Tensor Analysis of fMRI Data(2013)">
+  <img id="myImg66" class="main_display interaction 2d" src="66.PNG" alt="66" onclick="loadImages()" data-toggle="tooltip" title="Network Discovery via Constrained Tensor Analysis of fMRI Data(2013)">
   <div id="myModal66" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2217,7 +2203,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg67" class="main_display" src="67.PNG" alt="67" onclick="loadImages()" data-toggle="tooltip" title="Noodles: A Tool for Visualization of Numerical Weather Model Ensemble Uncertainty(2010)">
+  <img id="myImg67" class="main_display spatial cartographicMap position temporal timeline spatialTemporal interaction seperate visualization 2d multiView" src="67.PNG" alt="67" onclick="loadImages()" data-toggle="tooltip" title="Noodles: A Tool for Visualization of Numerical Weather Model Ensemble Uncertainty(2010)">
   <div id="myModal67" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2247,8 +2233,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg68" class="main_display" src="68.PNG" alt="68" onclick="loadImages()" data-toggle="tooltip" title="Outlier highlighting for spatio-temporal data
-  visualization(2010)">
+  <img id="myImg68" class="main_display color cartographicMap spatialTemporal " src="68.PNG" alt="68" onclick="loadImages()" data-toggle="tooltip" title="Outlier highlighting for spatio-temporal data visualization(2013)">
   <div id="myModal68" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2262,7 +2247,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">Outlier highlighting for spatio-temporal data visualization(2010)</h3>
+            <h3 class="media-heading">Outlier highlighting for spatio-temporal data visualization(2013)</h3>
               <h5 class="media-heading">by Ulla Pyysalo, Juha Oksanen
               </h5>
             <h6 class="media-heading">Ulla Pyysalo & Juha Oksanen (2013) Outlier highlighting for spatio-temporal data visualization, Cartography and Geographic Information Science, 40:3, 165-171</h6>
@@ -2278,7 +2263,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg69" class="main_display" src="69.PNG" alt="69" onclick="loadImages()" data-toggle="tooltip" title="Projected Field Similarity for Comparative Visualization of Multi-Run Multi-Field Time-Varying Spatial Data(2019)">
+  <img id="myImg69" class="main_display dimension 2d 3d" src="69.PNG" alt="69" onclick="loadImages()" data-toggle="tooltip" title="Projected Field Similarity for Comparative Visualization of Multi-Run Multi-Field Time-Varying Spatial Data(2019)">
   <div id="myModal69" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2310,7 +2295,7 @@
      </div>
   </div>
  
-  <img id="myImg70" class="main_display" src="70.PNG" alt="70" onclick="loadImages()" data-toggle="tooltip" title="Proximity-based Visualization of Movement Trace Data(2009)">
+  <img id="myImg70" class="main_display parallel 2d timeline interaction" src="70.PNG" alt="70" onclick="loadImages()" data-toggle="tooltip" title="Proximity-based Visualization of Movement Trace Data(2009)">
   <div id="myModal70" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2340,8 +2325,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg71" class="main_display" src="71.PNG" alt="71" onclick="loadImages()" data-toggle="tooltip" title="Result-Driven Exploration of Simulation Parameter Spaces for
-  Visual Effects Design(2010)">
+  <img id="myImg71" class="main_display visual timeline 2d" src="71.PNG" alt="71" onclick="loadImages()" data-toggle="tooltip" title="Result-Driven Exploration of Simulation Parameter Spaces for Visual Effects Design(2010)">
   <div id="myModal71" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2372,8 +2356,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg72" class="main_display" src="72.PNG" alt="72" onclick="loadImages()" data-toggle="tooltip" title="Result-Driven Exploration of Simulation Parameter Spaces for
-  Visual Effects Design(2010)">
+  <img id="myImg72" class="main_display" src="72.PNG" alt="72" onclick="loadImages()" data-toggle="tooltip" title="Result-Driven Exploration of Simulation Parameter Spaces for Visual Effects Design(2010)">
   <div id="myModal72" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2404,7 +2387,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg73" class="main_display" src="73.PNG" alt="73" onclick="loadImages()" data-toggle="tooltip" title="Semantic Enrichment of Movement Behavior with Foursquare–A Visual Analytics Approach(2014)">
+  <img id="myImg73" class="main_display spatial cartographicMap position temporal timeline spatialTemporal interaction visualization 2d multiView" src="73.PNG" alt="73" onclick="loadImages()" data-toggle="tooltip" title="Semantic Enrichment of Movement Behavior with Foursquare–A Visual Analytics Approach(2015)">
   <div id="myModal73" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2418,7 +2401,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">Semantic Enrichment of Movement Behavior with Foursquare–A Visual Analytics Approach(2014)</h3>
+            <h3 class="media-heading">Semantic Enrichment of Movement Behavior with Foursquare–A Visual Analytics Approach(2015)</h3>
               <h5 class="media-heading">by Robert Krueger, Dennis Thom, Thomas Ertl
               </h5>
             <h6 class="media-heading">R. Krueger, D. Thom and T. Ertl, "Semantic Enrichment of Movement Behavior with Foursquare–A Visual Analytics Approach," in IEEE Transactions on Visualization and Computer Graphics, vol. 21, no. 8, pp. 903-915, 1 Aug. 2015</h6>
@@ -2434,7 +2417,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg74" class="main_display" src="74.PNG" alt="74" onclick="loadImages()" data-toggle="tooltip" title="SimpliFly: A Methodology for Simplification and Thematic Enhancement of Trajectories(2014)">
+  <img id="myImg74" class="main_display spatial cartographicMap position temporal timeline spatialTemporal coordinates visualization 3d singleView" src="74.PNG" alt="74" onclick="loadImages()" data-toggle="tooltip" title="SimpliFly: A Methodology for Simplification and Thematic Enhancement of Trajectories(2015)">
   <div id="myModal74" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2449,7 +2432,7 @@
           </div>
           <div class="media-body" style='padding-left: 20px;'>
             <h3 class="media-heading">SimpliFly: A Methodology for Simplification and
-              Thematic Enhancement of Trajectories(2014)</h3>
+              Thematic Enhancement of Trajectories(2015)</h3>
               <h5 class="media-heading">by Katerina Vrotsou, Halldor Janetzko, Carlo Navarra
               </h5>
             <h6 class="media-heading">K. Vrotsou et al., "SimpliFly: A Methodology for Simplification and Thematic Enhancement of Trajectories," in IEEE Transactions on Visualization and Computer Graphics, vol. 21, no. 1, pp. 107-121, 1 Jan. 2015</h6>
@@ -2465,7 +2448,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg75" class="main_display" src="75.PNG" alt="75" onclick="loadImages()" data-toggle="tooltip" title="Simulating ultra-intense femtosecond lasers in the 3-dimensional space-time domain(2018)">
+  <img id="myImg75" class="main_display dimension 3d spatialTemporal" src="75.PNG" alt="75" onclick="loadImages()" data-toggle="tooltip" title="Simulating ultra-intense femtosecond lasers in the 3-dimensional space-time domain(2018)">
   <div id="myModal75" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2495,7 +2478,7 @@
       </div>
      </div>
   </div>
-<img id="myImg76" class="main_display" src="76.PNG" alt="76" onclick="loadImages()" data-toggle="tooltip" title="SnapShot: Visualization to Propel Ice Hockey Analytics(2012)">
+<img id="myImg76" class="main_display spatial cartographicMap position spatialTemporal interaction seperate visualization 2d multiView" src="76.PNG" alt="76" onclick="loadImages()" data-toggle="tooltip" title="SnapShot: Visualization to Propel Ice Hockey Analytics(2012)">
   <div id="myModal76" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2525,7 +2508,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg77" class="main_display" src="77.PNG" alt="77" onclick="loadImages()" data-toggle="tooltip" title="SoccerStories: A Kick-off for Visual Soccer Analysis(2013)">
+  <img id="myImg77" class="main_display spatial otherMap temporal timeline position spatialTemporal interaction visualization 2d multiView" src="77.PNG" alt="77" onclick="loadImages()" data-toggle="tooltip" title="SoccerStories: A Kick-off for Visual Soccer Analysis(2013)">
   <div id="myModal77" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2555,7 +2538,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg78" class="main_display" src="78.PNG" alt="78" onclick="loadImages()" data-toggle="tooltip" title="Space-Time Visual Analytics of Eye-Tracking Data for Dynamic Stimuli(2013)">
+  <img id="myImg78" class="main_display spatial cartographicMap position temporal timeline text spatialTemporal rectangular animation visualization 3d singleView" src="78.PNG" alt="78" onclick="loadImages()" data-toggle="tooltip" title="Space-Time Visual Analytics of Eye-Tracking Data for Dynamic Stimuli(2013)">
   <div id="myModal78" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2585,7 +2568,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg79" class="main_display" src="79.PNG" alt="79" onclick="loadImages()" data-toggle="tooltip" title="Spatial and Spatiotemporal Data Mining(2010)">
+  <img id="myImg79" class="main_display spatial spatialTemporal layers 3d" src="79.PNG" alt="79" onclick="loadImages()" data-toggle="tooltip" title="Spatial and Spatiotemporal Data Mining(2010)">
   <div id="myModal79" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2675,7 +2658,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg82" class="main_display" src="82.PNG" alt="82" onclick="loadImages()" data-toggle="tooltip" title="Spatio-Temporal Analysis of Team Sports(2017)">
+  <img id="myImg82" class="main_display interaction text parallel" src="82.PNG" alt="82" onclick="loadImages()" data-toggle="tooltip" title="Spatio-Temporal Analysis of Team Sports(2017)">
   <div id="myModal82" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2735,8 +2718,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg84" class="main_display" src="84.PNG" alt="84" onclick="loadImages()" data-toggle="tooltip" title="Spatio-Temporal Data Mining: A Survey of Problems
-  and Methods(2018)">
+  <img id="myImg84" class="main_display color position 3d" src="84.PNG" alt="84" onclick="loadImages()" data-toggle="tooltip" title="Spatio-Temporal Data Mining: A Survey of Problems and Methods(2018)">
   <div id="myModal84" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2767,7 +2749,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg85" class="main_display" src="85.PNG" alt="85" onclick="loadImages()" data-toggle="tooltip" title="Spatio-temporal data mining in ecological and veterinary epidemiology(2017)">
+  <img id="myImg85" class="main_display spatialTemporal" src="85.PNG" alt="85" onclick="loadImages()" data-toggle="tooltip" title="Spatio-temporal data mining in ecological and veterinary epidemiology(2017)">
   <div id="myModal85" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2797,7 +2779,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg86" class="main_display" src="86.PNG" alt="86" onclick="loadImages()" data-toggle="tooltip" title="Spatio-temporal data visualization for monitoring of control measures in the prevention of the spread of COVID-19 in Bosnia and Herzegovina(2020)">
+  <img id="myImg86" class="main_display spatial cartographicMap position temporal timeframe text visualization 2d multiView" src="86.PNG" alt="86" onclick="loadImages()" data-toggle="tooltip" title="Spatio-temporal data visualization for monitoring of control measures in the prevention of the spread of COVID-19 in Bosnia and Herzegovina(2020)">
   <div id="myModal86" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2827,7 +2809,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg87" class="main_display" src="87.PNG" alt="87" onclick="loadImages()" data-toggle="tooltip" title="Spatio-Temporal Outlier Detection in Large Databases(2006)">
+  <img id="myImg87" class="main_display spatial cartographicMap position temporal timeframe text seperate visualization 2d singleView" src="87.PNG" alt="87" onclick="loadImages()" data-toggle="tooltip" title="Spatio-Temporal Outlier Detection in Large Databases(2006)">
   <div id="myModal87" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2857,7 +2839,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg88" class="main_display" src="88.PNG" alt="88" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Anomaly Detection through Visual Analysis of Geolocated Twitter Messages(2012)">
+  <img id="myImg88" class="main_display spatial spatialTemporal text visual" src="88.PNG" alt="88" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Anomaly Detection through Visual Analysis of Geolocated Twitter Messages(2012)">
   <div id="myModal88" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2887,7 +2869,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg89" class="main_display" src="89.PNG" alt="89" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Visualisation: A Survey and Outlook(2012)">
+  <img id="myImg89" class="main_display coordinates 3d visual orientation" src="89.PNG" alt="89" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Visualisation: A Survey and Outlook(2012)">
   <div id="myModal89" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2902,7 +2884,7 @@
           </div>
           <div class="media-body" style='padding-left: 20px;'>
             <h3 class="media-heading">Spatiotemporal Visualisation: A Survey and Outlook(2012)</h3>
-              <h5 class="media-heading">by Dennis Thom, Harald Bosch, Steffen Koch, Michael Worner
+              <h5 class="media-heading">by Chen Zhong, Tao Wang, Wei Zeng, Stefan Müller Arisona
               </h5>
             <h6 class="media-heading">Zhong C., Wang T., Zeng W., Müller Arisona S. (2012) Spatiotemporal Visualisation: A Survey and Outlook. In: Arisona S.M., Aschwanden G., Halatsch J., Wonka P. (eds) Digital Urban Modeling and Simulation. Communications in Computer and Information Science, vol 242. Springer, Berlin, Heidelberg.</h6>
             <h5>URL: <a href="https://doi.org/10.1007/978-3-642-29758-8_16" target="_blank">https://doi.org/10.1007/978-3-642-29758-8_16</a></h5>
@@ -2917,7 +2899,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg90" class="main_display" src="90.PNG" alt="90" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Point Pattern Analysis Using Ripley’s K Function(2017)">
+  <img id="myImg90" class="main_display spatialTemporal 3d visual interaction coordinates" src="90.PNG" alt="90" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Point Pattern Analysis Using Ripley’s K Function(2017)">
   <div id="myModal90" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2947,7 +2929,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg91" class="main_display" src="91.PNG" alt="91" onclick="loadImages()" data-toggle="tooltip" title="Stacking-Based Visualization of Trajectory Attribute Data(2012)">
+  <img id="myImg91" class="main_display spatial cartographicMap position temporal timeline timecircle orientation spatialTemporal interaction layers visualization 3d singleView multiView" src="91.PNG" alt="91" onclick="loadImages()" data-toggle="tooltip" title="Stacking-Based Visualization of Trajectory Attribute Data(2012)">
   <div id="myModal91" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2977,7 +2959,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg92" class="main_display" src="92.PNG" alt="92" onclick="loadImages()" data-toggle="tooltip" title="StatCast Dashboard: Exploration of Spatiotemporal Baseball Data(2016)">
+  <img id="myImg92" class="main_display interaction 2d" src="92.PNG" alt="92" onclick="loadImages()" data-toggle="tooltip" title="StatCast Dashboard: Exploration of Spatiotemporal Baseball Data(2016)">
   <div id="myModal92" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3007,7 +2989,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg93" class="main_display" src="93.PNG" alt="93" onclick="loadImages()" data-toggle="tooltip" title="Stories in GeoTime(2007)">
+  <img id="myImg93" class="main_display spatial cartographicMap position temporal timeline timeframe text spatialTemporal interaction coordinates animation visualization 3d singleView" src="93.PNG" alt="93" onclick="loadImages()" data-toggle="tooltip" title="Stories in GeoTime(2007)">
   <div id="myModal93" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3037,7 +3019,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg94" class="main_display" src="94.PNG" alt="94" onclick="loadImages()" data-toggle="tooltip" title="TelCoVis: Visual Exploration of Co-occurrence in Urban Human Mobility Based on Telco Data(2015)">
+  <img id="myImg94" class="main_display spatial otherMap position temporal timecircle orientation spatialTemporal coordinates visualization 2d 3d singleView multiView" src="94.PNG" alt="94" onclick="loadImages()" data-toggle="tooltip" title="TelCoVis: Visual Exploration of Co-occurrence in Urban Human Mobility Based on Telco Data(2015)">
   <div id="myModal94" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3067,7 +3049,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg95" class="main_display" src="95.PNG" alt="95" onclick="loadImages()" data-toggle="tooltip" title="The EpiCanvas infectious disease weather map: an interactive visual exploration of temporal and spatial correlations(2012)">
+  <img id="myImg95" class="main_display spatial cartographicMap position temporal text spatialTemporal interaction seperate visualization 2d multiView" src="95.PNG" alt="95" onclick="loadImages()" data-toggle="tooltip" title="The EpiCanvas infectious disease weather map: an interactive visual exploration of temporal and spatial correlations(2012)">
   <div id="myModal95" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3097,7 +3079,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg96" class="main_display" src="96.PNG" alt="96" onclick="loadImages()" data-toggle="tooltip" title="The Great Wall of Space-Time(2012)">
+  <img id="myImg96" class="main_display spatial cartographicMap position temporal timeline spatialTemporal rectangular 3d singleView" src="96.PNG" alt="96" onclick="loadImages()" data-toggle="tooltip" title="The Great Wall of Space-Time(2012)">
   <div id="myModal96" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3127,7 +3109,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg97" class="main_display" src="97.PNG" alt="97" onclick="loadImages()" data-toggle="tooltip" title="The Implementation of an Interactive Web-Based Visualization Tool for Eye-Tracking Data(2020)">
+  <img id="myImg97" class="main_display interaction visual 2d timeline" src="97.PNG" alt="97" onclick="loadImages()" data-toggle="tooltip" title="The Implementation of an Interactive Web-Based Visualization Tool for Eye-Tracking Data(2020)">
   <div id="myModal97" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3157,7 +3139,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg98" class="main_display" src="98.PNG" alt="98" onclick="loadImages()" data-toggle="tooltip" title="THE SPACE-TIME CUBE REVISITED FROM A GEOVISUALIZATION PERSPECTIVE(2003)">
+  <img id="myImg98" class="main_display spatial cartographicMap position temporal timeline spatialTemporal interaction rectangular visualization 3d singleView" src="98.PNG" alt="98" onclick="loadImages()" data-toggle="tooltip" title="THE SPACE-TIME CUBE REVISITED FROM A GEOVISUALIZATION PERSPECTIVE(2003)">
   <div id="myModal98" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3187,7 +3169,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg99" class="main_display" src="99.PNG" alt="99" onclick="loadImages()" data-toggle="tooltip" title="Time Curves: Folding Time to Visualize Patterns of Temporal Evolution in Data(2015)">
+  <img id="myImg99" class="main_display spatial cartographicMap position temporal timecurve spatialTemporal visual visualization 2d singleView" src="99.PNG" alt="99" onclick="loadImages()" data-toggle="tooltip" title="Time Curves: Folding Time to Visualize Patterns of Temporal Evolution in Data(2015)">
   <div id="myModal99" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3217,7 +3199,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg100" class="main_display" src="100.PNG" alt="100" onclick="loadImages()" data-toggle="tooltip" title="Time-focused clustering of trajectories of moving objects(2006)">
+  <img id="myImg100" class="main_display spatial cartographicMap position temporal timeline spatialTemporal rectangular visualization 3d singleView" src="100.PNG" alt="100" onclick="loadImages()" data-toggle="tooltip" title="Time-focused clustering of trajectories of moving objects(2006)">
   <div id="myModal100" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3248,7 +3230,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg101" class="main_display" src="101.PNG" alt="101" onclick="loadImages()" data-toggle="tooltip" title="Transformation of an Uncertain Video Search Pipeline to a Sketch-Based Visual Analytics Loop(2013)">
+  <img id="myImg101" class="main_display scatterPlot interaction 3d visual" src="101.PNG" alt="101" onclick="loadImages()" data-toggle="tooltip" title="Transformation of an Uncertain Video Search Pipeline to a Sketch-Based Visual Analytics Loop(2013)">
   <div id="myModal101" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3279,8 +3261,7 @@
      </div>
   </div>
 
-  <img id="myImg102" class="main_display" src="102.PNG" alt="102" onclick="loadImages()" data-toggle="tooltip" title="User-defined feature comparison for vector field
-  ensembles(2015)">
+  <img id="myImg102" class="main_display visual interaction dimension 3d" src="102.PNG" alt="102" onclick="loadImages()" data-toggle="tooltip" title="User-defined feature comparison for vector field ensembles(2015)">
   <div id="myModal102" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3311,7 +3292,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg103" class="main_display" src="103.PNG" alt="103" onclick="loadImages()" data-toggle="tooltip" title="Using geographically weighted regression to explore the spatially heterogeneous spread of bovine tuberculosis in England and Wales(2015)">
+  <img id="myImg103" class="main_display spatial spatialTemporal" src="103.PNG" alt="103" onclick="loadImages()" data-toggle="tooltip" title="Using geographically weighted regression to explore the spatially heterogeneous spread of bovine tuberculosis in England and Wales(2015)">
   <div id="myModal103" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3341,7 +3322,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg104" class="main_display" src="104.PNG" alt="104" onclick="loadImages()" data-toggle="tooltip" title="Vismate: Interactive Visual Analysis of station-based observation data on climate changes(2014)">
+  <img id="myImg104" class="main_display spatial cartographicMap position color temporal timecircle spatialTemporal polar visualization 2d singleView" src="104.PNG" alt="104" onclick="loadImages()" data-toggle="tooltip" title="Vismate: Interactive Visual Analysis of station-based observation data on climate changes(2014)">
   <div id="myModal104" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3371,7 +3352,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg105" class="main_display" src="105.PNG" alt="105" onclick="loadImages()" data-toggle="tooltip" title="Visual Analysis of Route Diversity(2011)">
+  <img id="myImg105" class="main_display spatial otherMap position temporal timecircle orientation spatialTemporal visual visualization 2d singleView" src="105.PNG" alt="105" onclick="loadImages()" data-toggle="tooltip" title="Visual Analysis of Route Diversity(2011)">
   <div id="myModal105" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3401,7 +3382,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg106" class="main_display" src="106.PNG" alt="106" onclick="loadImages()" data-toggle="tooltip" title="Visual Analysis of the Air Pollution Problem in Hong Kong(2007)">
+  <img id="myImg106" class="main_display spatial position circularChart orientation temporal color spatialTemporal polar visualization 2d singleView" src="106.PNG" alt="106" onclick="loadImages()" data-toggle="tooltip" title="Visual Analysis of the Air Pollution Problem in Hong Kong(2007)">
   <div id="myModal106" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3431,7 +3412,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg107" class="main_display" src="107.PNG" alt="107" onclick="loadImages()" data-toggle="tooltip" title="Visual Analysis of Uncertainties in Ocean Forecasts for Planning and Operation of Off-Shore Structures(2013)">
+  <img id="myImg107" class="main_display spatial otherMap position temporal timeline spatialTemporal interaction seperate visualization 3d multiView" src="107.PNG" alt="107" onclick="loadImages()" data-toggle="tooltip" title="Visual Analysis of Uncertainties in Ocean Forecasts for Planning and Operation of Off-Shore Structures(2013)">
   <div id="myModal107" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3462,7 +3443,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg108" class="main_display" src="108.PNG" alt="108" onclick="loadImages()" data-toggle="tooltip" title="Visual Analytics for Spatial Clusters of Air-Quality Data(2017)">
+  <img id="myImg108" class="main_display spatial cartographicMap position temporal timeframe timecircle orientation text spatialTemporal interaction seperate visualization 2d multiView" src="108.PNG" alt="108" onclick="loadImages()" data-toggle="tooltip" title="Visual Analytics for Spatial Clusters of Air-Quality Data(2017)">
   <div id="myModal108" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3492,7 +3473,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg109" class="main_display" src="109.PNG" alt="109" onclick="loadImages()" data-toggle="tooltip" title="Visual Analytics in Urban Computing: An Overview(2016)">
+  <img id="myImg109" class="main_display spatial otherMap cartographicMap position temporal timeline timeframe text spatialTemporal polar visual visualization 2d singleView" src="109.PNG" alt="109" onclick="loadImages()" data-toggle="tooltip" title="Visual Analytics in Urban Computing: An Overview(2016)">
   <div id="myModal109" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3522,7 +3503,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg110" class="main_display" src="110.PNG" alt="110" onclick="loadImages()" data-toggle="tooltip" title="Visual Analytics Methods for Categoric Spatio-Temporal Data(2013)">
+  <img id="myImg110" class="main_display spatial cartographicMap position temporal timeline spatialTemporal interaction visualization 2d multiView" src="110.PNG" alt="110" onclick="loadImages()" data-toggle="tooltip" title="Visual Analytics Methods for Categoric Spatio-Temporal Data(2013)">
   <div id="myModal110" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3536,7 +3517,7 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">Visual Analytics Methods for Categoric Spatio-Temporal Data(2013)</h3>
+            <h3 class="media-heading">Visual Analytics Methods for Categoric Spatio-Temporal Data(2012)</h3>
               <h5 class="media-heading">by T. von Landesberger, Sebastian Bremm, Natalia Andrienko, Gennady Andrienko
               </h5>
             <h6 class="media-heading">T. von Landesberger, S. Bremm, N. Andrienko, G. Andrienko and M. Tekušová, "Visual analytics methods for categoric spatio-temporal data," 2012 IEEE Conference on Visual Analytics Science and Technology (VAST), Seattle, WA, 2012, pp. 183-192</h6>
@@ -3552,7 +3533,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg111" class="main_display" src="111.PNG" alt="111" onclick="loadImages()" data-toggle="tooltip" title="Visual Exploration of Big Spatio-Temporal Urban Data: A Study of New York City Taxi Trips(2013)">
+  <img id="myImg111" class="main_display spatial otherMap position color temporal timeframe text spatialTemporal interaction seperate visualization 2d multiView" src="111.PNG" alt="111" onclick="loadImages()" data-toggle="tooltip" title="Visual Exploration of Big Spatio-Temporal Urban Data: A Study of New York City Taxi Trips(2013)">
   <div id="myModal111" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3582,7 +3563,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg112" class="main_display" src="112.PNG" alt="112" onclick="loadImages()" data-toggle="tooltip" title="Visual Exploration of Eye Movement Data Using the Space-Time-Cube(2010)">
+  <img id="myImg112" class="main_display interaction visual parallel 2d" src="112.PNG" alt="112" onclick="loadImages()" data-toggle="tooltip" title="Visual Exploration of Eye Movement Data Using the Space-Time-Cube(2010)">
   <div id="myModal112" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3597,7 +3578,7 @@
           </div>
           <div class="media-body" style='padding-left: 20px;'>
             <h3 class="media-heading">Visual Exploration of Eye Movement Data Using the Space-Time-Cube(2010)</h3>
-              <h5 class="media-heading">by Xia Li, Arzu Çöltekin3, Menno-Jan Kraak
+              <h5 class="media-heading">by Xia Li, Arzu Çöltekin, Menno-Jan Kraak
               </h5>
             <h6 class="media-heading">Li X., Çöltekin A., Kraak MJ. (2010) Visual Exploration of Eye Movement Data Using the Space-Time-Cube. In: Fabrikant S.I., Reichenbacher T., van Kreveld M., Schlieder C. (eds) Geographic Information Science. GIScience 2010. Lecture Notes in Computer Science, vol 6292. Springer, Berlin, Heidelberg.</h6>
             <h5>URL: <a href="https://doi.org/10.1007/978-3-642-15300-6_21" target="_blank">https://doi.org/10.1007/978-3-642-15300-6_21</a></h5>
@@ -3612,7 +3593,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg113" class="main_display" src="113.PNG" alt="113" onclick="loadImages()" data-toggle="tooltip" title="Visual Exploration of Sparse Traffic Trajectory Data(2014)">
+  <img id="myImg113" class="main_display spatial cartographicMap position temporal timeline spatialTemporal visual visualization 2d singleView" src="113.PNG" alt="113" onclick="loadImages()" data-toggle="tooltip" title="Visual Exploration of Sparse Traffic Trajectory Data(2014)">
   <div id="myModal113" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3642,7 +3623,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg114" class="main_display" src="114.PNG" alt="114" onclick="loadImages()" data-toggle="tooltip" title="Visual Soccer Analytics: Understanding the Characteristics of
+  <img id="myImg114" class="main_display spatial otherMap temporal timeline position spatialTemporal interaction visualization 2d multiView" src="114.PNG" alt="114" onclick="loadImages()" data-toggle="tooltip" title="Visual Soccer Analytics: Understanding the Characteristics of
   Collective Team Movement Based on Feature-Driven Analysis and Abstraction(2015)">
   <div id="myModal114" class="modal">
     <div class="modal-content">
@@ -3674,7 +3655,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg115" class="main_display" src="115.PNG" alt="115" onclick="loadImages()" data-toggle="tooltip" title="Visual soccer match analysis using spatiotemporal positions of players(2017)">
+  <img id="myImg115" class="main_display spatial otherMap scatterPlot color temporal timeline timeframe position spatialTemporal interaction coordinates visual visualization 2d singleView" src="115.PNG" alt="115" onclick="loadImages()" data-toggle="tooltip" title="Visual soccer match analysis using spatiotemporal positions of players(2017)">
   <div id="myModal115" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3705,7 +3686,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg116" class="main_display" src="116.PNG" alt="116" onclick="loadImages()" data-toggle="tooltip" title="Visual Traffic Jam Analysis Based on Trajectory Data(2013)">
+  <img id="myImg116" class="main_display spatial otherMap position temporal timeline spatialTemporal interaction seperate visualization 2d multiView" src="116.PNG" alt="116" onclick="loadImages()" data-toggle="tooltip" title="Visual Traffic Jam Analysis Based on Trajectory Data(2013)">
   <div id="myModal116" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3736,7 +3717,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg117" class="main_display" src="117.PNG" alt="117" onclick="loadImages()" data-toggle="tooltip" title="Visualization Framework for High-Dimensional Spatio-Temporal Hydrological Gridded Datasets using Machine-Learning Techniques(2020)">
+  <img id="myImg117" class="main_display spatial otherMap position color temporal timeframe spatialTemporal visual visualization 2d multiView" src="117.PNG" alt="117" onclick="loadImages()" data-toggle="tooltip" title="Visualization Framework for High-Dimensional Spatio-Temporal Hydrological Gridded Datasets using Machine-Learning Techniques(2020)">
   <div id="myModal117" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3767,7 +3748,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg118" class="main_display" src="118.PNG" alt="118" onclick="loadImages()" data-toggle="tooltip" title="Visualization of Covariance Structures for Multivariate Spatio-Temporal Random Fields(2020)">
+  <img id="myImg118" class="main_display spatial cartographicMap position temporal timecircle polar spatialTemporal visual visualization 2d singleView" src="118.PNG" alt="118" onclick="loadImages()" data-toggle="tooltip" title="Visualization of Covariance Structures for Multivariate Spatio-Temporal Random Fields(2020)">
   <div id="myModal118" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3799,8 +3780,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg119" class="main_display" src="119.PNG" alt="119" onclick="loadImages()" data-toggle="tooltip" title="Visualization of Geospatial Time Series from Environmental
-  Modeling Output(2012)">
+  <img id="myImg119" class="main_display spatial cartographicMap position temporal timeline color spatialTemporal seperate visualization 2d multiView" src="119.PNG" alt="119" onclick="loadImages()" data-toggle="tooltip" title="Visualization of Geospatial Time Series from Environmental Modeling Output(2012)">
   <div id="myModal119" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3814,14 +3794,13 @@
             </a>
           </div>
           <div class="media-body" style='padding-left: 20px;'>
-            <h3 class="media-heading">Visualization of Geospatial Time Series from Environmental
-              Modeling Output(2012)</h3>
-              <h5 class="media-heading">by Huang Huang, Ying Sun, Marc G. Genton
+            <h3 class="media-heading">Visualization of Geospatial Time Series from Environmental Modeling Output(2012)</h3>
+              <h5 class="media-heading">by Köthur, Patrick and Sips, Mike and Kuhlmann, Julian and Dransch
               </h5>
             <h6 class="media-heading">Collections EuroVisShort 2012
               </h6>
             <h5>URL: <a href="http://dx.doi.org/10.2312/PE/EuroVisShort/EuroVisShort2012/115-119" target="_blank">http://dx.doi.org/10.2312/PE/EuroVisShort/EuroVisShort2012/115-119</a></h5>
-            <h5><a href="Miriah_Meyer.tex" target="_blank" downlaod>
+            <h5><a href="Kothur_patrick.tex" target="_blank" downlaod>
               <span class="glyphicon glyphicon-save">
               </span>
               BibTeX
@@ -3832,7 +3811,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg120" class="main_display" src="120.PNG" alt="120" onclick="loadImages()" data-toggle="tooltip" title="Visualization Tool for Environmental Sensing and Public Health Data(2018)">
+  <img id="myImg120" class="main_display color position spatialTemporal parallel coordinates" src="120.PNG" alt="120" onclick="loadImages()" data-toggle="tooltip" title="Visualization Tool for Environmental Sensing and Public Health Data(2018)">
   <div id="myModal120" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3863,7 +3842,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg121" class="main_display" src="121.PNG" alt="121" onclick="loadImages()" data-toggle="tooltip" title="Visualizing the Underwater Behavior of Humpback Whales(2006)">
+  <img id="myImg121" class="main_display spatial otherMap position temporal timecurve spatialTemporal interaction animation visualization 3d singleView" src="121.PNG" alt="121" onclick="loadImages()" data-toggle="tooltip" title="Visualizing the Underwater Behavior of Humpback Whales(2006)">
   <div id="myModal121" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3925,7 +3904,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg123" class="main_display" src="123.PNG" alt="123" onclick="loadImages()" data-toggle="tooltip" title="Voyage Analysis Applied to Geovisual Analytics(2008)">
+  <img id="myImg123" class="main_display spatial cartographicMap position temporal timeline spatialTemporal interaction parallel seperate visualization 2d" src="123.PNG" alt="123" onclick="loadImages()" data-toggle="tooltip" title="Voyage Analysis Applied to Geovisual Analytics(2008)">
   <div id="myModal123" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3956,7 +3935,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg124" class="main_display" src="124.PNG" alt="124" onclick="loadImages()" data-toggle="tooltip" title="Wakame: Sense Making of Multi-Dimensional Spatial-Temporal Data(2010)">
+  <img id="myImg124" class="main_display spatial cartographicMap position temporal timeline spatialTemporal rectangular visualization 3d singleView" src="124.PNG" alt="124" onclick="loadImages()" data-toggle="tooltip" title="Wakame: Sense Making of Multi-Dimensional Spatial-Temporal Data(2010)">
   <div id="myModal124" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3989,8 +3968,9 @@
   </div>
   
 </div>
+
    
-    <div class="footer">
+    <div class="footer" hidden>
       <p>© ISOVIS group 2014–2020. All rights for the technique images belong to their respective owners.</p>
 
       <p> Version 1.9.9. Last updated: May 17, 2019</p>
