@@ -6,7 +6,7 @@
   }
 
 .footer {
-  position: fixed;
+  /*position: fixed;*/
   left: 0;
   
   bottom: 0;
@@ -24,7 +24,7 @@ body {
   font-size: 14px;
   color: #333;
   background-color: #fff;
-  overflow-y:scroll;
+  
   min-height: 400px;
   margin-bottom: 90px;
     
@@ -47,7 +47,7 @@ p{
   border-width: thin;
   border-radius: 5px;
   border-color:	#8b9dc3;
-  height:500px;
+  height:590px;
   display: block;
 }
 
@@ -60,19 +60,27 @@ p{
 hr.line_style{
   border-top: 1px solid #8b9dc3;
 }
+
+
 .btn {
-  background-color: grey;
+  background-color: #888e99;
   border: none;
   color: white;
-  font-size: 12px;
+  font-size: 8px;
   cursor: pointer;
 }
+.cb-btn:checked + label {
+  background-color:  #3b5998;
+}
 
+#alert{
+  height: 600px;
+}
 .display{
   padding-left: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
-  height:500px;
+  height:580px;
   
 }
 
@@ -95,8 +103,8 @@ img:hover {
 }
 
 #filters {
-  width: 326px;
-  height: 312px;
+  width: 330px;
+  height: 265px;
   overflow-y: scroll;
   overflow-x: hidden;
  
@@ -116,10 +124,6 @@ img:hover {
 }
 .button:hover {background-color: #8b9dc3;}
 
-.cb-btn:checked + label {
-  background-color: lightslategray;
-}
-
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -128,7 +132,7 @@ img:hover {
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  height: 105%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -202,10 +206,5 @@ img:hover {
   width:"210px";
   height:"210px";
 }
-
-
-
-
-
 
 
