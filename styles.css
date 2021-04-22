@@ -37,7 +37,7 @@ p{
 * {
   box-sizing: border-box;
 }
-
+/*styles applied for the box on the left which contains search box,buttons, count*/
 .box {
   float: left;
   width: 25%;
@@ -47,8 +47,10 @@ p{
   border-width: thin;
   border-radius: 5px;
   border-color:	#8b9dc3;
-  height:590px;
+ 
   display: block;
+  width: fit-content;
+  block-size: fit-content
 }
 
 .clearfix::after {
@@ -78,9 +80,8 @@ hr.line_style{
 }
 .display{
   padding-left: 20px;
-  overflow-y: scroll;
   overflow-x: hidden;
-  height:580px;
+  height:570px;
   
 }
 
@@ -95,7 +96,7 @@ img.main_display {
  image-rendering: pixelated;
  width:13%;
  height:25%;
-
+ 
 }
 
 img:hover {
@@ -206,5 +207,10 @@ img:hover {
   width:"210px";
   height:"210px";
 }
+
+
+
+
+
 
 
