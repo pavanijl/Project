@@ -37,21 +37,7 @@ p{
 * {
   box-sizing: border-box;
 }
-/*styles applied for the box on the left which contains search box,buttons, count*/
-.box {
-  float: left;
-  width: 25%;
-  padding: 5px;
-  border: 1px solid black;
-  border-style: solid;
-  border-width: thin;
-  border-radius: 5px;
-  border-color:	#8b9dc3;
- 
-  display: block;
-  width: fit-content;
-  block-size: fit-content
-}
+
 
 .clearfix::after {
   content: "";
@@ -85,6 +71,21 @@ hr.line_style{
   
 }
 
+/*styles applied for the box on the left which contains search box,buttons, count*/
+.box {
+  float: left;
+  padding: 5px;
+  border: 1px solid black;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  border-color:	#8b9dc3;
+   display: block;
+  width: fit-content;
+  height: fit-content;
+  block-size: fit-content
+}
+
 img.main_display {
   border-radius: 4%;
   box-shadow: 10px 10px 5px #ccc;
@@ -92,7 +93,7 @@ img.main_display {
       -webkit-box-shadow: 10px 10px 5px #ccc;
       -khtml-box-shadow: 10px 10px 5px #ccc;
  cursor:pointer;
- padding: 10px 3px 3px 3px;
+ padding: 10px 5px 5px 5px;
  image-rendering: pixelated;
  width:13%;
  height:25%;
@@ -106,7 +107,7 @@ img:hover {
 #filters {
   width: 330px;
   height: 265px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
  
 }
@@ -207,10 +208,4 @@ img:hover {
   width:"210px";
   height:"210px";
 }
-
-
-
-
-
-
 
