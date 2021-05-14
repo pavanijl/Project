@@ -5,24 +5,23 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js" crossorigin="null"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.0.js" crossorigin="null"></script>
+
 
 <title>Page Title</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 <script src = "content.js"></script>
 
 </head>
-
 <body>
   <div class = "header"> 
     <h2 style="color: #fff">A Visual Survey of Spatial-Temporal Data Visualization Techniques</h2><br>
       <p>
         <a href = "http://sites.gsu.edu/yzhu/" style="color: #fff; text-decoration: underline"  target="_blank">Ying Zhu @GSU</a>
-      </p>
-      
+      </p>    
   </div>
 <br>
   <div class="clearfix">
@@ -35,12 +34,8 @@
 <a href="#" onclick="keywordModal()"><u>Keyword search list</u></a>
 </pre>
 <pre><p>Select All</p><br><input type="button" class= "btn btn-primary btn-block" value="Select All" data-toggle="tooltip" data-entry="SelectAll" title="SelectAll" id="selectAll" onclick="loadAll();"></pre>
-    
-   
-        
-<div id="filters">
-  
-  
+           
+<div id="filters"> 
   <p><pre>A.1 Visual Representation </p></pre>
  
   <div id="visualRep">
@@ -57,7 +52,6 @@
   </div>
  
   <p><pre>B. Visual Variables </p></pre>
-
   <div id="visualVar">
   <input type="checkbox" id="color" hidden name="color" class="cb-btn" value="color" onclick="filterResults()"><label class="btn btn-info" for="color" data-toggle="tooltip" data-entry="color" title="B1.1 Color">Color</label>&nbsp;
   <input type="checkbox" id="position" hidden name="position" class="cb-btn" value="position" onclick="filterResults()"><label class="btn btn-info" for="position" data-toggle="tooltip" data-entry="position" title="B1.2 Position">Position</label>&nbsp;
@@ -65,9 +59,7 @@
   <input type="checkbox" id="text" hidden name="text" class="cb-btn" value="text" onclick="filterResults()"><label class="btn btn-info" for="text" data-toggle="tooltip" data-entry="text" title="B1.4 Text">Text</label><br><br>
 </div>
   
-
-  <p><pre>C.1 Spatial-Temporal Information </p></pre>
-
+  <p><pre>C.1 Spatial-Temporal Information</p></pre>
   <div id="spTempInfo"> 
   <input type="checkbox" id="interaction" hidden name="interaction" class="cb-btn" value="interaction" onclick="filterResults()"><label class="btn btn-info" for="interaction" data-toggle="tooltip" data-entry="interaction" title="C1.1 Interaction">Interaction</label>&nbsp;
   <input type="checkbox" id="layers" hidden name="layers" class="cb-btn" value="layers" onclick="filterResults()"><label class="btn btn-info" for="layers" data-toggle="tooltip" data-entry="layers" title="D1.3 Layers">Layers</label>&nbsp;
@@ -76,10 +68,7 @@
   <input type="checkbox" id="visual" hidden name="visual" class="cb-btn" value="visual" onclick="filterResults()"><label class="btn btn-info" for="visual" data-toggle="tooltip" data-entry="visual" title="C1.6 Visual">Visual</label><br>
   </div>
   
-
-
   <p><pre>C.2 Coordinates</p></pre>
-
   <div id="coordinatesFilter"> 
   <input type="checkbox" id="rectangular" hidden name="rectangular" class="cb-btn" value="rectangular" onclick="filterResults()"><label class="btn btn-info" for="rectangular" data-toggle="tooltip" data-entry="rectangular" title="C2.1 rectangular">Rectangular</label>&nbsp;
   <input type="checkbox" id="polar" hidden name="polar" class="cb-btn" value="polar" onclick="filterResults()"><label class="btn btn-info" for="polar" data-toggle="tooltip" data-entry="polar" title="C2.2 Polar">Polar</label>&nbsp;
@@ -88,16 +77,13 @@
 
 
   <p><pre>D.1 Dimension </p></pre>
-
   <div id="dimenFilter">
   <input type="checkbox" id="2d" hidden name="2d" class="cb-btn" value="2d" onclick="filterResults()"><label class="btn btn-info" for="2d" data-toggle="tooltip" data-entry="2d" title="D1.1 2D">2D</label>&nbsp;
   <input type="checkbox" id="3d" hidden name="3d" class="cb-btn" value="3d" onclick="filterResults()"><label class="btn btn-info" for="3d" data-toggle="tooltip" data-entry="3d" title="D1.2 3D">3D</label>&nbsp;
   <input type="checkbox" id="4d" hidden name="4d" class="cb-btn" value="4d" onclick="filterResults()"><label class="btn btn-info" for="4d" data-toggle="tooltip" data-entry="4d" title="D1.3 4D">4D</label><br>
 </div>
-  
 
   <p><pre>D.2 View </p></pre>
-
   <div id="viewFilter">
   <input type="checkbox" id="singleView" hidden name="singleView" class="cb-btn" value="singleView" onclick="filterResults()"><label class="btn btn-info" for="singleView" data-toggle="tooltip" data-entry="singleView" title="D2.1 SingleView">Single View</label>&nbsp;
   <input type="checkbox" id="multiView" hidden name="multiView" class="cb-btn" value="multiView" onclick="filterResults()"><label class="btn btn-info" for="multiView" data-toggle="tooltip" data-entry="multiView" title="D2.2 multiView">Multiple View</label><br>
@@ -107,8 +93,7 @@
 
 <div class="display">
   <div id = 'msg'></div>
-  
-  <img id="myImg1" class="main_display spatial cartographicMap position temporal timecurve spatialTemporal rectangular visualization 3d singleView" src="1.PNG" alt="1" onclick="loadImages()" data-toggle="tooltip" title="3D Information Visualization for Time Dependent Data on Maps(2005)">
+  <img id="myImg1" class="main_display spatial cartographicMap position temporal timecurve spatialTemporal rectangular visualization 3d singleView" src="1.PNG" alt="1" onload="loadImages()" data-toggle="tooltip" title="3D Information Visualization for Time Dependent Data on Maps(2005)">
   <div id="myModal1" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -146,7 +131,7 @@
     </div>
   </div>
 
-  <img id="myImg2" class="main_display spatial cartographicMap position color temporal timeline spatialTemporal interaction layers seperate visualization 2d multiView sinleView" src="2.PNG" alt="2" onclick="loadImages()" data-toggle="tooltip" title="A 3D Visualization of Multiple Time Series on Maps(2010)">
+  <img id="myImg2" class="main_display spatial cartographicMap position color temporal timeline spatialTemporal interaction layers seperate visualization 2d multiView sinleView" src="2.PNG" alt="2" onload="loadImages()" data-toggle="tooltip" title="A 3D Visualization of Multiple Time Series on Maps(2010)">
   <div id="myModal2" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -288,7 +273,7 @@
     </div>
   </div>
 
-  <img id="myImg6" class="main_display" src="6.PNG" alt="6" onclick="loadImages()" data-toggle="tooltip" title="A pandemic influenza modeling and visualization tool(2011)">
+  <img id="myImg6" class="main_display rectangular" src="6.PNG" alt="6" onclick="loadImages()" data-toggle="tooltip" title="A pandemic influenza modeling and visualization tool(2011)">
   <div id="myModal6" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -717,7 +702,7 @@
     </div>
   </div>
 
-  <img id="myImg18" class="main_display spatial visual interaction coordinates layers" src="18.PNG" alt="18" onclick="loadImages()" data-toggle="tooltip" title="A Survey on Spatial Prediction Methods(2018)">
+  <img id="myImg18" class="main_display spatial visual interaction coordinates rectangular layers" src="18.PNG" alt="18" onclick="loadImages()" data-toggle="tooltip" title="A Survey on Spatial Prediction Methods(2018)">
   <div id="myModal18" class="modal">
       <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -965,7 +950,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg26" class="main_display coordinates" src="26.PNG" alt="26" onclick="loadImages()" data-toggle="tooltip" title="An Exploratory Analysis of the Effects of Spatial and Temporal Scale and Transportation Mode on Anonymity in Human Mobility Trajectories(2018)">
+  <img id="myImg26" class="main_display coordinates rectangular" src="26.PNG" alt="26" onclick="loadImages()" data-toggle="tooltip" title="An Exploratory Analysis of the Effects of Spatial and Temporal Scale and Transportation Mode on Anonymity in Human Mobility Trajectories(2018)">
   <div id="myModal26" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1052,7 +1037,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg29" class="main_display coordinates circularChart interaction animation 3d" src="29.PNG" alt="29" onclick="loadImages()" data-toggle="tooltip" title="Axes-Based Visualizations with Radial Layouts(2004)">
+  <img id="myImg29" class="main_display coordinates circularChart interaction animation rectangular 3d" src="29.PNG" alt="29" onclick="loadImages()" data-toggle="tooltip" title="Axes-Based Visualizations with Radial Layouts(2004)">
   <div id="myModal29" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -1168,7 +1153,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg33" class="main_display color position animation" src="33.PNG" alt="33" onclick="loadImages()" data-toggle="tooltip" title="Contour Boxplots: A Method for Characterizing Uncertainty in Feature Sets from Simulation Ensembles(2013)">
+  <img id="myImg33" class="main_display color position animation rectangular" src="33.PNG" alt="33" onclick="loadImages()" data-toggle="tooltip" title="Contour Boxplots: A Method for Characterizing Uncertainty in Feature Sets from Simulation Ensembles(2013)">
   <div id="myModal33" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2869,7 +2854,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg89" class="main_display coordinates 3d visual orientation" src="89.PNG" alt="89" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Visualisation: A Survey and Outlook(2012)">
+  <img id="myImg89" class="main_display coordinates 3d visual orientation rectangular" src="89.PNG" alt="89" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Visualisation: A Survey and Outlook(2012)">
   <div id="myModal89" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -2899,7 +2884,7 @@
       </div>
      </div>
   </div>
-  <img id="myImg90" class="main_display spatialTemporal 3d visual interaction coordinates" src="90.PNG" alt="90" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Point Pattern Analysis Using Ripley’s K Function(2017)">
+  <img id="myImg90" class="main_display spatialTemporal 3d visual interaction coordinates rectangular" src="90.PNG" alt="90" onclick="loadImages()" data-toggle="tooltip" title="Spatiotemporal Point Pattern Analysis Using Ripley’s K Function(2017)">
   <div id="myModal90" class="modal">
     <div class="modal-content">
       <div class="modal-header" style='border: none;'>
@@ -3968,15 +3953,6 @@
   </div>
   
 </div>
-
-   
-    <div class="footer" hidden>
-      <p>© ISOVIS group 2014–2020. All rights for the technique images belong to their respective owners.</p>
-
-      <p> Version 1.9.9. Last updated: May 17, 2019</p>
-      
-      <p>This website is using Google Analytics (for statistical purposes only) and cookies (for dismissible dialogs only).</p>
-  </div>
   </div>
 
   
